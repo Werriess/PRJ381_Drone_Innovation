@@ -101,6 +101,75 @@ nav.show{
    margin-bottom: 1%;
 }
 
+#loginPage {
+  background-color: rgb(51,51,51);
+  height: 100vh;
+}
+
+#logoLoginPage {
+  color: rgb(187, 39, 26);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  padding-top: 12rem;
+}
+
+#formBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  padding-top: 5rem;
+}
+
+#formBlock button {
+  border-radius: 2rem;
+  padding: 0.2rem;
+  width: 6rem;
+  margin-top: 2rem;
+}
+
+#form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 20%;
+  color: white;
+}
+
+.formRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+
+.formRow label {
+  margin-right: 1rem;
+}
+
+@media (max-width: 600px) {
+  .formRow {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .formRow label {
+    margin-right: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  .formRow input {
+    width: 100%;
+  }
+}
 @media screen and (max-width: 760px) {
   .App{
     height: 30dvh;
