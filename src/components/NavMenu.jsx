@@ -9,23 +9,23 @@ const NavMenu = () => {
   };
 
   return (
-    <div>
-      <nav className={isNavVisible ? 'show' : ''}>
+    <div id='navMenu'>
+      <nav className={isNavVisible ? 'show' : 'notShow'}>
         <div>
-          <img src="/images/Futures.png" alt="Futures" />
+          <img src="../src/assets/Futures.svg" alt="Futures" />
           <a href="">STATS</a>
         </div>
         <div>
-          <img src="/images/Drone.png" alt="Drone" />
+          <img src="../src/assets/Drone.svg" alt="Drone" />
           <a href="./specs.html">SPECS</a>
         </div>
         <div>
-          <img src="/images/Services.png" alt="Services" />
+          <img src="../src/assets/Services.svg" alt="Services" />
           <a href="">SETTINGS</a>
         </div>
       </nav>
       <img
-        src="/images/Double Left.png"
+        src=""
         id="arrowNav"
         onClick={toggleNav}
         alt="Toggle Navigation"

@@ -25,6 +25,7 @@ header{
   justify-content: space-between;
   padding-left: 40px;
   padding-right: 40px;
+  min-height: 10vh;
 }
 header img{
   width: 40px;
@@ -35,35 +36,45 @@ header img{
   display: flex;
   flex-direction: row;
   align-items: center;
+  color: rgb(187, 39, 26);
 }
 
 #main{
   display: flex;
   flex-direction: row;
-  align-items: center;
+  background-image: url("../src/assets/HomePageBG.svg");
+  min-height: 90vh;
 }
 nav{
   background-color: #e7e7e749;
   justify-content: space-between;
-  height: 50%;
   border-right: #33333360 solid 2px;
   transition: transform 0.4s ease-in-out;
   transform: translateX(-120px);
   transform-origin: left;
+  min-height: 90vh;
 }
 nav div{
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 25px;
 }
 nav div a{
   text-decoration: none;
   color: black;
 }
 
+nav.notShow{
+  display: flex;
+  flex-direction: column;
+  min-height: 90vh;
+}
+
 nav.show{
+  display: flex;
+  flex-direction: column;
   transform: translateX(0px);
+  min-height: 90vh;
 }
 
 #arrowNav{
@@ -153,6 +164,16 @@ nav.show{
 
 .formRow label {
   margin-right: 1rem;
+}
+
+#navMenu {
+  min-height: 80vh;
+}
+
+#content {
+  background-color: #7b7b7b91;
+  width: 83%;
+
 }
 
 @media (max-width: 600px) {
