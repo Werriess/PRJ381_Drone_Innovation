@@ -1,7 +1,19 @@
-import React from "react";
+import React, {useState} from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles.css";
 
-function LoginPage() {
+const LoginPage = () => {
+const [isButtonClicked, setClicked] = useState(false);
+const navigate = useNavigate();
+
+const toggleButton = () => {
+    setClicked(!isButtonClicked);
+    setTimeout(() => {
+        navigate('/info');
+    }, 2000);
+}
+
+
     return(
         <div id="loginPage">
               <section id="logoLoginPage">
@@ -19,7 +31,9 @@ function LoginPage() {
                         <input type="password" id="password" />
                     </div>
                 </form>
-                <button>Verify</button>
+                <button id="loginButton" onClick={toggleButton} className={isButtonClicked ?  'load' : 'notLoad'}>
+                    {isButtonClicked ? 'Complete' : 'Verify'}
+                </button>
             </section>
         </div>
     )       
