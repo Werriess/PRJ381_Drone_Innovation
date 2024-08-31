@@ -10,7 +10,7 @@ const pilotLogout = ({isVisible}) => {
         </div>
         <div id="text">
             Pilot
-            <div id="username"> Username </div>
+            <div id="usernameLogout"> Username </div>
         </div>
         <a id="logout" href='/'>Log Out</a>
     </div>
