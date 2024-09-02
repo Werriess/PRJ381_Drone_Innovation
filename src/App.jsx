@@ -5,9 +5,13 @@ import { Environment, OrbitControls } from "@react-three/drei";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
 import { Suspense } from "react";
-import Info from "./pages/info";
+
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import LoginPage from "./pages/login";
+import Info from "./pages/info";
+import Specs from "./pages/specs";
+import Settings from "./pages/settings";
+import Stats from "./pages/stats";
 
 const Model = () => {
   const gltf = useLoader(GLTFLoader, "../src/assets/brain_compressed.gltf", (loader) => {
@@ -25,12 +29,34 @@ export default function App() {
       <Router>
         <Routes>
           <Route 
-          path ="/"
-          element={
-            <LoginPage />
-          }/>
-          <Route path="/info"
-          element={<Info/>}/>
+            path="/" 
+            element={
+              <LoginPage />
+            } 
+          />
+          <Route 
+            path="/specs" 
+            element={
+              <Specs>
+                <Canvas>
+                  <Suspense fallback={null}>
+                    <Model />
+                    <OrbitControls />
+                    <Environment preset="forest" background />
+                  </Suspense>
+                </Canvas>
+              </Specs>
+            } 
+          />
+          <Route 
+            path="/info" 
+            element={<Info />} 
+          />
+          <Route path="/settings"
+          element={<Settings/>}/>
+
+          <Route path="/stats"
+          element={<Stats/>}/>
         </Routes>
       </Router>
     </div>

@@ -1,44 +1,41 @@
-import React from "react";
+import React, {useState} from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles.css";
 
-function LoginPage() {
-  const navigate = useNavigate();
+const LoginPage = () => {
+const [isButtonClicked, setClicked] = useState(false);
+const navigate = useNavigate();
 
-  const handleVerifyClick = () => {
-    navigate("/info");
-  };
+const toggleButton = () => {
+    setClicked(!isButtonClicked);
+    setTimeout(() => {
+        navigate('/info');
+    }, 2000);
+}
 
-  return (
-    <div id="loginPage">
-      <section id="logoLoginPage">
-        <img src="./src/assets/DroneBottom.svg" alt="Drone Tech Logo" />
-        <h1>Drone Tech</h1>
-      </section>
-      <section id="formBlock">
-        <form id="form">
-          <div className="formRow">
-            <label>Username:</label>
-            <input type="text" id="username" />
-          </div>
-          <div className="formRow">
-            <label>Password:</label>
-            <input type="password" id="password"/>
-          </div>
-        </form>
-        <div className="verifyButton">
-          <button type="button" onClick={handleVerifyClick}>
-            Verify
-          </button>
-          <p>
-          Don't have an account?
-          <span>
-            <a href="/register">Register</a>
-          </span>
-        </p>
+
+    return(
+        <div id="loginPage">
+              <section id="logoLoginPage">
+                <img src="./src/assets/DroneBottom.svg" alt="" />
+                <h1>Drone Tech</h1>
+            </section>
+             <section id="formBlock">
+                <form id="form">
+                    <div className="formRow">
+                        <label htmlFor="username">Username:</label>
+                        <input type="text" id="username" />
+                    </div>
+                    <div className="formRow">
+                        <label htmlFor="password">Password:</label>
+                        <input type="password" id="password" />
+                    </div>
+                </form>
+                <button id="loginButton" onClick={toggleButton} className={isButtonClicked ?  'load' : 'notLoad'}>
+                    {isButtonClicked ? 'Complete' : 'Verify'}
+                </button>
+            </section>
         </div>
-      </section>
-    </div>
   );
 }
 
