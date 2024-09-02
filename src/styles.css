@@ -1,3 +1,9 @@
+:root {
+  --primary: 5, 76%, 42%, 100%;
+
+  --greyBackground: 0, 0%, 20%, 100%;
+}
+
 
 
 .App {
@@ -21,7 +27,7 @@ body {
 header{
   display: flex;
   flex-direction: row;
-  background-color: #333333;
+  background-color: hsl(var(--greyBackground));
   align-items: center;
   justify-content: space-between;
   padding-left: 40px;
@@ -169,7 +175,7 @@ nav.show{
 }
 
 #loginPage {
-  background-color: rgb(51,51,51);
+  background-color: hsl(var(--greyBackground));
   height: 100vh;
 }
 
@@ -191,12 +197,19 @@ nav.show{
 }
 
 #formBlock {
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   justify-content: center;
   padding-top: 5rem;
+  gap: 2rem;
+}
+
+
+#formBlock p {
+  color: white;
+  font-size: small;
 }
 
 #loginButton {
@@ -247,7 +260,7 @@ nav.show{
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-width: 20%;
+  max-width: auto;
   color: white;
 }
 
@@ -259,7 +272,6 @@ nav.show{
   width: 100%;
   margin-bottom: 1rem;
 }
-
 
 .formRow label {
   margin-right: 1rem;
@@ -434,24 +446,17 @@ nav.show{
 @media (max-width: 600px) {
   .formRow {
     flex-direction: column;
-    align-items: flex-start;
   }
-
-  .formRow label {
-    margin-right: 0;
-    margin-bottom: 0.5rem;
-  }
-
   .formRow input {
     width: 100%;
   }
 }
 @media screen and (max-width: 760px) {
   .App{
-    height: 30dvh;
+    height: 30vh;
   }
   #box{
-    height: 30dvh;
+    height: 30vh;
   }
 }
 
