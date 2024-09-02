@@ -1,11 +1,6 @@
 import mongoose from "mongoose";
 
 const registerSchema  = new mongoose.Schema({
-    username: {
-        type: String,
-        required: true,
-        unique: true,
-    },
     first_name: {
         type: String,
         required: true
@@ -18,6 +13,11 @@ const registerSchema  = new mongoose.Schema({
         type: String,
         required: true
     },
+    username: {
+        type: String,
+        required: true,
+        unique: true,
+    },
     password: {
         type: String,
         required: true
@@ -26,5 +26,5 @@ const registerSchema  = new mongoose.Schema({
 
 registerSchema.set('autoIndex', true);
 
-const register = mongoose.model('Register', registerSchema);
-export default register;
+const Register = mongoose.model('Register', registerSchema);
+export default Register;

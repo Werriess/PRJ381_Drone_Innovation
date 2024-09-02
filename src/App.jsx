@@ -12,6 +12,7 @@ import Info from "./pages/info";
 import Specs from "./pages/specs";
 import Settings from "./pages/settings";
 import Stats from "./pages/stats";
+import Register from "./pages/register";
 
 const Model = () => {
   const gltf = useLoader(GLTFLoader, "../src/assets/brain_compressed.gltf", (loader) => {
@@ -34,6 +35,10 @@ export default function App() {
               <LoginPage />
             } 
           />
+          <Route path="/register"
+          element={
+            <Register/>
+          }/>
           <Route 
             path="/specs" 
             element={

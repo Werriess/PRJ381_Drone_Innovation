@@ -2,14 +2,12 @@
   --primary: 5, 76%, 42%, 100%;
 
   --greyBackground: 0, 0%, 20%, 100%;
+  --greySecondary: 0, 0%, 85%, 100%;
 }
-
-
 
 .App {
   font-family: sans-serif;
   text-align: center;
-  height: 60vh;
 }
 
 body {
@@ -441,7 +439,66 @@ nav.show{
   text-decoration: none;
 }
 
+#register {
+  background-color: hsl(var(--greyBackground));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  gap: 5rem;
 
+}
+
+#registerContainer {
+  background-color: hsl(var(--greyBackground));
+  display: flex;
+  gap: 2rem;
+  max-width: 966px;
+}
+
+#leftSide {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+  gap: 2rem;
+}
+
+#leftSide input {
+  padding: 0.5rem;
+  width: 15rem;
+}
+
+#rightSide {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: hsl(var(--greySecondary));
+  flex: 1;
+  padding: 6rem;
+}
+
+#pilotHat {
+  display: flex;
+  width: 80%;
+  justify-content: flex-end;
+}
+
+#pilotHat img {
+  width: 4rem;
+}
+
+#registerButton {
+  display: flex;
+  margin-top: 2rem;
+}
+
+#registerButton button {
+  padding: 0.5rem;
+  width: 10rem;
+  border: none;
+}
 
 @media (max-width: 600px) {
   .formRow {
@@ -449,6 +506,9 @@ nav.show{
   }
   .formRow input {
     width: 100%;
+  }
+  #rightSide {
+    display: none;
   }
 }
 @media screen and (max-width: 760px) {

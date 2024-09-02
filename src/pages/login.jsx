@@ -36,7 +36,7 @@ const toggleButton = () => {
                 </button>
             </section>
         </div>
-  );
+    )       
 }
 
 export default LoginPage;
