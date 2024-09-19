@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import bcrypt from "bcrypt";
 
 const registerSchema  = new mongoose.Schema({
     first_name: {
@@ -23,6 +24,21 @@ const registerSchema  = new mongoose.Schema({
         required: true
     },
 });
+
+registerSchema.pre('save', async function(next) {
+
+    if (!this.isModified('password')) {
+        return next(); 
+    }
+    try {
+        const hashedpw = await bcrypt.hash(this.password, 10);
+        this.password = hashedpw;
+        next();
+    }catch(error) {
+        next(error);
+    }
+    
+})
 
 registerSchema.set('autoIndex', true);
 
