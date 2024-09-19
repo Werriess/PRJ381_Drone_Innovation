@@ -1,9 +1,6 @@
 import express from 'express';
 import Register from '../models/register.js';
-import { fileURLToPath } from 'url';
-import {join, dirname} from 'path';
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
 const registerRouter = express.Router();
 
 registerRouter.post("/submit", async (req, res) => {

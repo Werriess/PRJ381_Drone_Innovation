@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import '../styles.css';
+
 
 const NavMenu = () => {
   const [isNavVisible, setIsNavVisible] = useState(false);
@@ -13,20 +15,19 @@ const NavMenu = () => {
     setArrow(!isArrowOpen);
   }
 
+ const navigate = useNavigate();
+
   return (
     <div id='navMenu'>
       <nav className={isNavVisible ? 'show' : 'notShow'}>
         <div>
-          <img src="../src/assets/Futures.svg" alt="Futures" />
-          <a href="./stats">STATS</a>
+          <img src="../src/assets/Futures.svg" alt="Futures" onClick={() => navigate('/stats')}/>
         </div>
         <div>
-          <img src="../src/assets/Drone.svg" alt="Drone" />
-          <a href="./specs">SPECS</a>
+          <img src="../src/assets/Drone.svg" alt="Drone" onClick={() => navigate('/specs')}/>
         </div>
         <div>
-          <img src="../src/assets/Services.svg" alt="Services" />
-          <a href="./settings">SETTINGS</a>
+          <img src="../src/assets/Services.svg" alt="Services" onClick={() => navigate('/settings')}/>
         </div>
       </nav>
       <div id = 'arrowButton' onClick={() => {toggleNav(); toggleButton();}} className={isArrowOpen ? 'show' : 'notShow'} >

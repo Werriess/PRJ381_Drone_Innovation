@@ -7,6 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/register/submit': 'http://localhost:8000',
+      '/login': 'http://localhost:8000'
     },
   },
 })

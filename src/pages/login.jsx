@@ -1,42 +1,85 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles.css";
 
-const LoginPage = () => {
-const [isButtonClicked, setClicked] = useState(false);
-const navigate = useNavigate();
+function LoginPage ()
+{
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
-const toggleButton = () => {
-    setClicked(!isButtonClicked);
-    setTimeout(() => {
-        navigate('/info');
-    }, 2000);
-}
+  const handleSubmit = async (event) => {
+    event.preventDefault(); 
 
+    try {
+      const response = await fetch("/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username, password }),
+      });
 
-    return(
-        <div id="loginPage">
-              <section id="logoLoginPage">
-                <img src="./src/assets/DroneBottom.svg" alt="" />
-                <h1>Drone Tech</h1>
-            </section>
-             <section id="formBlock">
-                <form id="form">
-                    <div className="formRow">
-                        <label htmlFor="username">Username:</label>
-                        <input type="text" id="username" />
-                    </div>
-                    <div className="formRow">
-                        <label htmlFor="password">Password:</label>
-                        <input type="password" id="password" />
-                    </div>
-                </form>
-                <button id="loginButton" onClick={toggleButton} className={isButtonClicked ?  'load' : 'notLoad'}>
-                    {isButtonClicked ? 'Complete' : 'Verify'}
-                </button>
-            </section>
-        </div>
-    )       
-}
+      const data = await response.json();
+
+      if (response.ok) {
+        navigate("/info");
+      } else {
+        setError(data.message);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      setError("An error occurred. Please try again.");
+    }
+
+    localStorage.setItem("username", username);
+
+  };
+
+  const handleRegisterNavigate = () => {
+    navigate("/register");
+  }
+
+  return (
+    <div id="loginPage">
+      <section id="logoLoginPage">
+        <img src="./src/assets/DroneBottom.svg" alt="Drone Tech Logo" />
+        <h1>Drone Tech</h1>
+      </section>
+      <section id="formBlock">
+        <form onSubmit={handleSubmit} id="form">
+          <div className="formRow">
+            <label>Username:</label>
+            <input
+              name="username"
+              type="text"
+              id="username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+            />
+          </div>
+          <div className="formRow">
+            <label>Password:</label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+          {error && <p className="error">{error}</p>}
+          <button type="submit" id="loginButton">
+            Verify
+          </button>
+          <p>Don't have an account?<span id="registerUser" onClick={handleRegisterNavigate}> Register</span></p>
+        </form>
+      </section>
+    </div>
+  );
+};
 
 export default LoginPage;
