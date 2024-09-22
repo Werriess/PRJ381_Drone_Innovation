@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles.css";
+import Cookies from "js-cookie";
 
-function LoginPage ()
-{
+function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
-    event.preventDefault(); 
-
+    event.preventDefault();
+  
     try {
       const response = await fetch("/login", {
         method: "POST",
@@ -20,26 +20,34 @@ function LoginPage ()
         },
         body: JSON.stringify({ username, password }),
       });
-
+  
       const data = await response.json();
 
       if (response.ok) {
+        const accessToken = data.accessToken;
+  
+        Cookies.set("accessToken", accessToken, {
+          expires: 1,
+          sameSite: "None",
+          secure: true,
+        });
+  
         navigate("/info");
       } else {
         setError(data.message);
       }
     } catch (error) {
-      console.error('Error:', error);
+      console.error("Error:", error);
       setError("An error occurred. Please try again.");
     }
-
+  
     localStorage.setItem("username", username);
-
   };
+  
 
   const handleRegisterNavigate = () => {
     navigate("/register");
-  }
+  };
 
   return (
     <div id="loginPage">
@@ -75,11 +83,17 @@ function LoginPage ()
           <button type="submit" id="loginButton">
             Verify
           </button>
-          <p>Don't have an account?<span id="registerUser" onClick={handleRegisterNavigate}> Register</span></p>
+          <p>
+            Don't have an account?
+            <span id="registerUser" onClick={handleRegisterNavigate}>
+              {" "}
+              Register
+            </span>
+          </p>
         </form>
       </section>
     </div>
   );
-};
+}
 
-export default LoginPage;
+export default Login;

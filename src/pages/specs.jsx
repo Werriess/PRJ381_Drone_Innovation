@@ -3,7 +3,7 @@ import '../styles.css';
 import Header from "../components/Header";
 import NavMenu from '../components/NavMenu';
 
-const specs = ({children}) => {
+const Specs = ({children}) => {
 
 
     return(
@@ -26,4 +26,4 @@ const specs = ({children}) => {
     );
 };
 
-export default specs;
+export default Specs;
