@@ -5,7 +5,7 @@ import NavMenu from '../components/NavMenu';
 import SettingBars from '../components/settingBars';
 import CheckBox from '../components/checkBox';
 
-const settings = () => {
+const Settings = () => {
     return(
         <div>
             <Header/>
@@ -38,4 +38,4 @@ const settings = () => {
     );
 };
 
-export default settings;
+export default Settings;

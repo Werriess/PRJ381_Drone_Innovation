@@ -1,31 +1,30 @@
-import React, { useState } from 'react';
-import '../styles.css';
+import React, { useState } from "react";
+import "../styles.css";
 import Header from "../components/Header";
-import NavMenu from '../components/NavMenu';
-import StatsBars from '../components/statsBars';
+import NavMenu from "../components/NavMenu";
+import StatsBars from "../components/statsBars";
 
-const stats = () => {
-    return(
-        <div>
-            <Header/>
-        <section id="models">
-            <NavMenu/>
-            <div id="settingBox">
-            <div id="setOne">
-                <section className="sett">
-                    Stat1
-                    <StatsBars/>
-             </section>
-             <section className="sett">
-                Stat2
-                <StatsBars/>
-             </section>
-            </div>
-            
-            </div>
-	</section>
-     </div>
-    );
+const Stats = () => {
+  return (
+    <div>
+      <Header />
+      <section id="models">
+        <NavMenu />
+        <div id="settingBox">
+          <div id="setOne">
+            <section className="sett">
+              Stat1
+              <StatsBars />
+            </section>
+            <section className="sett">
+              Stat2
+              <StatsBars />
+            </section>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
 };
 
-export default stats;
+export default Stats;
