@@ -1,27 +1,33 @@
-import React, { useState } from "react";
 import "../styles.css";
 import Header from "../components/Header";
 import NavMenu from "../components/NavMenu";
-import StatsBars from "../components/statsBars";
 
 const Stats = () => {
   return (
-    <div>
+    <div id="stats">
       <Header />
-      <section id="models">
+      <section id="statsContent">
         <NavMenu />
-        <div id="settingBox">
-          <div id="setOne">
-            <section className="sett">
-              Stat1
-              <StatsBars />
-            </section>
-            <section className="sett">
-              Stat2
-              <StatsBars />
-            </section>
+        <section id="generalStatsContainer">
+          <div id="generalStats">
+            <div className="generalStatsBlock">
+              500
+              <p>Flight hours</p>
+            </div>
+            <div className="generalStatsBlock">
+              500
+              <p>Total Expeditions</p>
+            </div>
+            <div className="generalStatsBlock">
+              500
+              <p>Total gasses detected</p>
+            </div>
           </div>
-        </div>
+          <section id="statsOptions">
+            <div className="statsButtons">Log manually</div>
+            <div className="statsButtons">Expedition</div>
+          </section>
+        </section>
       </section>
     </div>
   );

@@ -111,6 +111,14 @@ header img{
   background-size:contain;
 }
 
+#models{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: flex-start;
+  margin-top: 3%;
+}
+
 #content {
   display: flex;
   flex-direction: column;
@@ -130,7 +138,7 @@ header img{
 
 #navMenu{
   display: flex;
-  flex-direction: row;
+  justify-content: center;
   align-items: center;
 }
 
@@ -193,17 +201,56 @@ nav.show{
   padding-left: 3%;
 }
 
+#stats {
+  background-color: #ffffff;
+  height: 100vh;
+}
+
+#generalStats {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 25rem;
+  margin-top: 2rem;
+}
+
+.generalStatsBlock {
+  font-size: large;
+  color: var(--redItems);
+}
+
+.generalStatsBlock p{
+  font-weight: bold;
+  color: rgb(48, 48, 48);
+}
+
+#statsOptions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15rem;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+}
+
+.statsButtons {
+  background-color: rgb(217, 217, 217);
+  color: var(--redItems);
+  width: 5rem;
+  padding: 6rem;
+  font-weight: bold;
+}
+
+
 #mainSpecs{
   display: flex;
   flex-direction: column;
 }
 
-#models{
+#statsContent {
   display: flex;
-  flex-direction: row;
-  width: 100%;
-  align-items: flex-start;
-  margin-top: 3%;
 }
 
 #specs{
@@ -324,28 +371,6 @@ nav.show{
 
 .formRow label {
   margin-right: 1rem;
-}
-
-#settingBox{
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  align-items: flex-start;
-  justify-content: center;
-}
-
-#setOne{
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-}
-
-.sett{
-  display: flex;
-  flex-direction: row;
-  padding: 3%;
-  align-items: center;
-  justify-content: left;
 }
 
 .outer{
@@ -575,6 +600,14 @@ nav.show{
   }
   #navMenu {
     display: none;
+  }
+  #generalStats {
+    display: block;
+    gap: 0rem;
+  }
+  #statsOptions {
+    gap: 2rem;
+    padding: 0.5rem;
   }
 }
 @media screen and (max-width: 760px) {
