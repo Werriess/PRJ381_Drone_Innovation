@@ -1,8 +1,8 @@
-import express from 'express';
-import bodyParser from 'body-parser';
-import registerRouter from '../routes/index.js';
-import loginRouter from '../routes/loginRoute.js';
-import cors from 'cors';
+import express from "express";
+import bodyParser from "body-parser";
+import registerRouter from "../routes/index.js";
+import loginRouter from "../routes/loginRoute.js";
+import cors from "cors";
 
 const app = express();
 

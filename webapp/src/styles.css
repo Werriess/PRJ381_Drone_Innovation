@@ -212,6 +212,8 @@ nav.show{
   justify-content: center;
   align-items: center;
   width: 100%;
+  background-color: var(--redItems);
+  margin-right: 2rem;
 }
 
 #generalStats {
@@ -227,12 +229,12 @@ nav.show{
 
 .generalStatsBlock {
   font-size: large;
-  color: var(--redItems);
+  color: white;
 }
 
 .generalStatsBlock p{
   font-weight: bold;
-  color: rgb(48, 48, 48);
+  color: white;
 }
 
 #statsOptions {
@@ -572,6 +574,11 @@ nav.show{
   background-color: hsl(var(--greySecondary));
   flex: 1;
   padding: 6rem;
+}
+
+.registerFeedback {
+  color: var(--redItems);
+  font-size: small;
 }
 
 #pilotHat {

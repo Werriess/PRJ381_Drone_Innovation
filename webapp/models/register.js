@@ -2,15 +2,15 @@ import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 
 const registerSchema  = new mongoose.Schema({
-    first_name: {
+    firstName: {
         type: String,
         required: true
     },
-    last_name: {
+    lastName: {
         type: String,
         required: true
     },
-    email_address: {
+    emailAddress: {
         type: String,
         required: true
     },

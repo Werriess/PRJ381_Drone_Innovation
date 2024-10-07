@@ -4,13 +4,13 @@ import Register from '../models/register.js';
 const registerRouter = express.Router();
 
 registerRouter.post("/submit", async (req, res) => {
-    const { first_name, last_name, email_address, username, password } = req.body;
+    const { firstName, lastName, emailAddress, username, password } = req.body;
 
     try {
         const newRegister = new Register({
-            first_name,
-            last_name,
-            email_address,
+            firstName,
+            lastName,
+            emailAddress,
             username,
             password
         });
