@@ -206,12 +206,21 @@ nav.show{
   height: 100vh;
 }
 
+#generalStatsContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
 #generalStats {
   width: 100%;
   max-width: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: center;
+  align-items: center;
   gap: 25rem;
   margin-top: 2rem;
 }
@@ -251,6 +260,10 @@ nav.show{
 
 #statsContent {
   display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: flex-start;
+  margin-top: 3%;
 }
 
 #specs{
