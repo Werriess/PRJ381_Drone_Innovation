@@ -9,6 +9,9 @@ const Stats = () => {
       <section id="statsContent">
         <NavMenu />
         <section id="generalStatsContainer">
+          <div>
+            Live data: 
+          </div>
           <div id="generalStats">
             <div className="generalStatsBlock">
               500
