@@ -10,8 +10,8 @@ export default defineConfig({
       usePolling: true, 
     },
     proxy: {
-      '/register/submit': 'http://localhost:8000',
-      '/login': 'http://localhost:8000'
+      '/register/submit': 'http://webapp:8000',
+      '/login': 'http://webapp:8000'
     },
   },
 })
