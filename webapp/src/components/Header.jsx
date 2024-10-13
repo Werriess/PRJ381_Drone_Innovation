@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {Link} from 'react-router-dom';
 import PilotLogout from './pilotLogout';
 import BurgerMenu from './burgerMenu';
@@ -16,7 +16,26 @@ function Header() {
 
   const toggleBurger = () => {
     setBurgerVisible(!isBurgerVisible);
-  }
+  };
+
+  const handleClickOutside = (event) => {
+    if (!event.target.closest('#pilot')) {
+      setPilotVisible(false);
+    }
+  };
+
+  useEffect(() => {
+    if(isPilotVisible){
+      window.addEventListener('click', handleClickOutside);
+    }else {
+      window.removeEventListener('click', handleClickOutside);
+      }
+
+      return () => {
+        window.removeEventListener('click', handleClickOutside);
+      };
+    }, [isPilotVisible]);
+  
 
   return (
     <header>

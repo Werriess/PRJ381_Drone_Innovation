@@ -47,6 +47,10 @@ function Register() {
     }
   };
 
+  const handleLoginNavigate = () => {
+    window.location.href = "/";
+  };
+
   return (
     <div id="register">
       <div id="pilotHat">
@@ -111,10 +115,14 @@ function Register() {
           <div id="registerButton">
             <button type="submit">Register</button>
           </div>
+          <p>
+            Already have an account?
+            <span id="registerUser" onClick={handleLoginNavigate}>
+              {" "}
+              Login
+            </span>
+          </p>
         </form>
-        <div id="rightSide">
-          <img src="src/assets/Vector.svg" alt="Drone svg" />
-        </div>
       </div>
     </div>
   );

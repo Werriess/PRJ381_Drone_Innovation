@@ -6,9 +6,11 @@ function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setIsLoading(true);
   
     try {
       const response = await fetch("/login", {
@@ -29,17 +31,27 @@ function Login() {
           sameSite: "None",
           secure: true,
         });
-  
-        window.location.href = "/info"
+        
+        setTimeout(() => {
+          window.location.href = "/info";
+        }, 2000);
       } else {
         setError(data.message);
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 2000);
       }
     } catch (error) {
       console.error("Error:", error);
       setError("An error occurred. Please try again.");
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 2000);
     }
   
     localStorage.setItem("username", username);
+
+    
   };
   
 
@@ -78,8 +90,8 @@ function Login() {
             />
           </div>
           {error && <p className="error">{error}</p>}
-          <button type="submit" id="loginButton">
-            Verify
+          <button type="submit" id="loginButton" className={isLoading ? "load": ""}>
+            {isLoading ? "Completed" : "Verify"}
           </button>
           <p>
             Don't have an account?

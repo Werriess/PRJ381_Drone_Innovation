@@ -15,8 +15,7 @@ const pilotLogout = ({ isVisible, username }) => {
         <img src="../src/assets/AirPilotHat.svg" alt="Air Pilot Hat" />
       </div>
       <div id="text">
-        Pilot:
-        <div id="usernameLogout"> {username ? username : "Username"} </div>
+        Pilot: <div id="usernameLogout"> {username ? username : "Username"} </div>
       </div>
       <button id="logout" onClick={handleLogout}>
         Log out

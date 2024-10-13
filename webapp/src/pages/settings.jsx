@@ -9,7 +9,7 @@ const Settings = () => {
     return(
         <div>
             <Header/>
-        <section id="models">
+        <section id="settings">
             <NavMenu/>
             <div id="settingBox">
             <div id="setOne">

@@ -9,7 +9,7 @@ const Stats = () => {
       <section id="statsContent">
         <NavMenu />
         <section id="generalStatsContainer">
-          <div>
+          <div id="liveData">
             Live data: 
           </div>
           <div id="generalStats">

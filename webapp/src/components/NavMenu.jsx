@@ -19,7 +19,7 @@ const NavMenu = () => {
 
   return (
     <div id='navMenu'>
-      <nav className={isNavVisible ? 'show' : 'notShow'}>
+      <nav className={isNavVisible ? 'show' : 'hide'}>
         <div>
           <img src="../src/assets/Futures.svg" alt="Futures" onClick={() => navigate('/stats')}/>
         </div>

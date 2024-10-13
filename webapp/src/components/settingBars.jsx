@@ -6,6 +6,7 @@ const [width, setWidth] = useState(0);
 const arrowUpRef = useRef(null);
 const arrowDownRef = useRef(null);
 const barRef = useRef(null);
+
 let increaseInterval;
 let decreaseInterval;
 
@@ -43,6 +44,16 @@ useEffect(() => {
         clearInterval(decreaseInterval);
     };
 
+    //Touch Handles for mobile
+    const handleTouch = (event) => {
+        const touch = event.touches[0];
+        const touchX = touch.clientX;
+        const barRect = barRef.current.getBoundingClientRect();
+        const barWidth = barRect.width;
+        const newWidth = ((touchX - barRect.left)/barWidth) *100;
+        setWidth(newWidth < 0 ? 0 : newWidth > 100 ? 100 : newWidth);
+    };
+    if((arrowUp && arrowDown && barRef.current)){
     arrowUp.addEventListener('mousedown', startIncrease);
     arrowUp.addEventListener('mouseleave', stopIncrease);
     arrowUp.addEventListener('mouseup', stopIncrease);
@@ -51,7 +62,19 @@ useEffect(() => {
     arrowDown.addEventListener('mouseleave', stopDecrease);
     arrowDown.addEventListener('mouseup', stopDecrease);
 
+    arrowUp.addEventListener('touchstart', startIncrease);
+    arrowUp.addEventListener('touchcancel', stopIncrease);
+    arrowUp.addEventListener('touchend', stopIncrease);
+
+    arrowDown.addEventListener('touchstart', startDecrease);
+    arrowDown.addEventListener('touchcancel', stopDecrease);
+    arrowDown.addEventListener('touchend', stopDecrease);
+
+    barRef.current.addEventListener('touchmove', handleTouch);
+    }
+
     return() => {
+        if((arrowUp && arrowDown )){
     arrowUp.removeEventListener('mousedown', startIncrease);
     arrowUp.removeEventListener('mouseleave', stopIncrease);
     arrowUp.removeEventListener('mouseup', stopIncrease);
@@ -59,6 +82,18 @@ useEffect(() => {
     arrowDown.removeEventListener('mousedown', startDecrease);
     arrowDown.removeEventListener('mouseleave', stopDecrease);
     arrowDown.removeEventListener('mouseup', stopDecrease);
+
+    arrowUp.removeEventListener('touchstart', startIncrease);
+    arrowUp.removeEventListener('touchcancel', stopIncrease);
+    arrowUp.removeEventListener('touchend', stopIncrease);
+
+    arrowDown.removeEventListener('touchstart', startDecrease);
+    arrowDown.removeEventListener('touchcancel', stopDecrease);
+    arrowDown.removeEventListener('touchend', stopDecrease);
+        }
+        if((barRef.current)){
+    barRef.current.removeEventListener('touchmove', handleTouch);
+        }
     };
 }, []);
 
