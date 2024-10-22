@@ -217,67 +217,75 @@ nav.hide{
 
 #generalStatsContainer {
   display: flex;
+  width: 100%;
+  margin-right: 2rem;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+#statsLeft {
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  margin-right: 2rem;
- 
+  gap: 1.5rem;
 }
- #liveData{
-  margin-top: 3%;
-  font-size: 25px;
-  font-weight: bold;
-  color:#a30000;
-  width: 100%;
-  margin-bottom: 3%;
- }
 
-#generalStats {
-  width: 100%;
-  max-width: 100%;
+#statsRight {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 25rem;
-  margin-top: 2rem;
+  flex-direction: column;
+  gap: 5rem;
 }
 
-.generalStatsBlock {
-  font-size: 26px;
-  color:#a30000;
-  font-weight: bolder;
+.liveDataContainer {
+  flex: 1;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 0.5rem;
 }
 
-.generalStatsBlock p{
-  color: rgb(0, 0, 0);
-  font-weight: normal;
-  font-size: 18px;
+.liveDataContainer h1 {
+  color: var(--redItems);
 }
 
-#statsOptions {
+.googleMapsContainer {
+  flex: 1;
+}
+
+.pilotInfo {
   display: flex;
-  flex-wrap: wrap;
-  gap: 15rem;
-  justify-content: center;
-  align-items: center;
-  height: 60vh;
+  gap: 2rem;
+  color: black;
+  border-radius: 0.5rem;
 }
 
-.statsButtons {
-  background-color: rgb(227, 227, 227);
-  color:#a30000;
-  align-items: center;
-  align-content: center;
-  width: 17rem;
-  font-weight: bold;
-  height: 7rem;
-  border-radius: 12px;
-  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
-  cursor: pointer;
+.pilotInfoBlock {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 6rem;
+  border-radius: 0.5rem;
 }
 
+.pilotInfo h1 {
+  color: var(--redItems)
+}
+
+.expiditionInfoBlock {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  border-radius: 0.5rem;
+}
+
+.expiditionInfoBlock h1 {
+  color: var(--redItems);
+}
+
+#expidition {
+  width: 100%;
+  color: var(--redItems);
+}
+
+.expiditionDropDown {
+  width: 100%;
+}
 
 #mainSpecs{
   display: flex;
@@ -286,9 +294,9 @@ nav.hide{
 
 #statsContent {
   display: flex;
-  flex-direction: row;
   width: 100%;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
 }
 
 #specs{
@@ -725,6 +733,10 @@ nav.hide{
   }
   #bottom{
     margin-bottom: 80px;
+  }
+
+  #generalStatsContainer {
+    flex-direction: column;
   }
 }
 
