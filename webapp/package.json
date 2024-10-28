@@ -10,6 +10,8 @@
     "seed": "node src/js/seed.js"
   },
   "dependencies": {
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
     "@faker-js/faker": "^9.0.3",
     "@mui/x-charts": "^7.22.0",
     "@react-three/drei": "^9.111.2",

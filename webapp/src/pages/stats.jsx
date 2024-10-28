@@ -1,7 +1,7 @@
 import "../styles.css";
 import Header from "../components/Header";
 import NavMenu from "../components/NavMenu";
-import { PieChart } from '@mui/x-charts/PieChart ';
+import { PieChart } from '@mui/x-charts/PieChart';
 
 const Stats = () => {
   return (
