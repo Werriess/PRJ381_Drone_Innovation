@@ -18,13 +18,13 @@ body {
 }
 
 @font-face {
-  font-family: 'KeaniaOne';
-  src: url('../src/fonts/KeaniaOne-Regular.ttf') format('truetype');
+  font-family: "KeaniaOne";
+  src: url("../src/fonts/KeaniaOne-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 
-header{
+header {
   display: flex;
   flex-direction: row;
   background-color: hsl(var(--greyBackground));
@@ -34,21 +34,21 @@ header{
   padding-right: 40px;
   min-height: 10vh;
 }
-header img{
+header img {
   width: 40px;
   height: 60px;
 }
 
-#logo{
+#logo {
   display: flex;
   flex-direction: row;
   align-items: center;
   color: hsl(5, 76%, 42%);
 }
 
-#infoLink{
+#infoLink {
   text-decoration: none;
-  font-family: 'KeaniaOne', sans-serif;
+  font-family: "KeaniaOne", sans-serif;
   font-size: 28px;
   color: rgb(187, 39, 26);
 }
@@ -58,7 +58,7 @@ header img{
   color: var(--redItems);
 }
 
-.burgerShow nav{
+.burgerShow nav {
   position: absolute;
   top: 5rem;
   left: 8rem;
@@ -99,25 +99,24 @@ header img{
   max-height: 100vh;
 }
 
-#main{
+#main {
   display: flex;
   background-color: rgba(0, 0, 0, 0.649);
-  
+
   min-height: 90vh;
 }
 
-#overlay{
+#overlay {
   max-width: 100%;
   background-image: url("../src/assets/infoBackground.png");
-  background-size:contain;
+  background-size: contain;
 }
 
-#models{
+#models {
   display: flex;
   flex-direction: row;
   width: 100%;
 }
-
 
 #content {
   display: flex;
@@ -130,13 +129,13 @@ header img{
   padding: 1rem;
 }
 
-#content h1{
-  font-family: 'KeaniaOne', sans-serif;
+#content h1 {
+  font-family: "KeaniaOne", sans-serif;
   font-size: 82px;
   font-weight: normal;
 }
 
-#navMenu{
+#navMenu {
   display: flex;
   align-self: center !important;
   justify-content: flex-start;
@@ -145,8 +144,7 @@ header img{
   margin-left: 10px;
 }
 
-
-nav{
+nav {
   background-color: #e7e7e781;
   display: flex;
   flex-direction: column;
@@ -157,33 +155,32 @@ nav{
   transform: translateX(-128px);
   transform-origin: left;
 }
-nav div{
+nav div {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 0.5rem;
   cursor: pointer;
- 
 }
-nav div a{
+nav div a {
   text-decoration: none;
   color: black;
   font-weight: bolder;
-  font-family: 'KeaniaOne', sans-serif;
+  font-family: "KeaniaOne", sans-serif;
 }
 
-nav.show{
+nav.show {
   display: flex;
   flex-direction: column;
   transform: translateX(0px);
   height: 80vh;
 }
 
-nav.hide{
+nav.hide {
   height: 2px;
 }
 
-#arrowButton{
+#arrowButton {
   background-image: url("../src/assets/redArrow.png");
   background-repeat: no-repeat;
   background-size: contain;
@@ -194,12 +191,11 @@ nav.hide{
   cursor: pointer;
 }
 
-
-#arrowButton.show{
+#arrowButton.show {
   transform: rotate(0deg) translateX(0);
 }
 
-#bottom{
+#bottom {
   display: flex;
   position: absolute;
   align-items: center;
@@ -216,114 +212,98 @@ nav.hide{
 
 #generalStatsContainer {
   display: flex;
+  justify-content: center;
+  align-self: center;
   width: 100%;
   margin-right: 2rem;
   gap: 2rem;
   margin-top: 1rem;
 }
 
-
-
 #statsLeft {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+  padding: 0.5rem;
   gap: 1.5rem;
+  padding-top: 0;
 }
 
 #statsRight {
   display: flex;
   flex-direction: column;
   gap: 5rem;
-  padding: 20px;
-}
-
-#statsRight h1 {
-font-size: 20px;
-background-color: rgb(236, 236, 236);
-height: 2rem;
-width: 100%;
-margin-top: 0px;
-padding-top: 10px;
-margin-left: 0px;
-border-top-left-radius: 0.5rem;
-border-top-right-radius: 0.5rem;
-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
 }
 
 .liveDataContainer {
   flex: 1;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  border-radius: 0.5rem;
 }
 
 .liveDataContainer h1 {
-  color: var(--redItems);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: medium;
+  background-color: var(--redItems);
+  color: white;
+  font-size: medium;
+  height: 3rem;
+  width: 100%;
+  margin-top: 0;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
 }
 
 .googleMapsContainer {
   flex: 1;
 }
 
-.pilotInfo {
+#headerStats {
   display: flex;
-  gap: 2rem;
-  color: black;
-  border-radius: 0.5rem;
-}
-
-.pilotInfoBlock {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  width: 6rem;
-  border-radius: 0.5rem;
-  padding: 10px;
-}
-.pilotInfoBlock h1{
-  font-size: 16px;
-  background-color: rgb(236, 236, 236);
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;;
+  font-size: medium;
   height: 2rem;
-  width: 7.23rem;
-  margin-top: -10px;
-  padding-top: 10px;
-  margin-left: -10px;
-  border-top-left-radius: 0.5rem;
-  border-top-right-radius: 0.5rem;
+  background-color: var(--redItems);
+  color: white;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+  padding: 0.5rem;
 }
 
-.pilotInfo h1 {
-  color: var(--redItems)
-}
-
-.expiditionInfoBlock {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+.generalStatsInfo {
+  display: flex; 
   width: 100%;
-  border-radius: 0.5rem;
-  padding: 20px;
+  justify-content: space-between;
 }
-.expiditionInfoBlock h1{
-  font-size: 20px;
-  background-color: rgb(236, 236, 236);
-  height: 2rem;
-  width: 110%;
-  margin-top: -20px;
-  padding-top: 10px;
-  margin-left: -20px;
-  border-top-left-radius: 0.5rem;
-  border-top-right-radius: 0.5rem;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+
+.generalStatsInfo h1{
+  color: var(--redItems);
+}
+.expiditionInfoBlock {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
 }
 
 .expiditionInfoBlock h1 {
   color: var(--redItems);
 }
 
+table tbody tr {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
 #expidition {
   width: 100%;
   color: var(--redItems);
   height: 2rem;
-  border-radius: 12px;
   padding-left: 8px;
 }
 
@@ -331,7 +311,7 @@ box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
   width: 100%;
 }
 
-#mainSpecs{
+#mainSpecs {
   display: flex;
   flex-direction: column;
 }
@@ -343,7 +323,7 @@ box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
   align-items: center;
 }
 
-#specs{
+#specs {
   background-color: #7b7b7b91;
   height: 50vh;
   width: 80vw;
@@ -352,27 +332,27 @@ box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
   overflow-y: scroll;
   overflow-x: scroll;
 }
-#specs div{
+#specs div {
   text-align: left;
   margin-right: 90px;
   margin-top: 20px;
   margin-left: 30px;
 }
 
-#specs div h1{
+#specs div h1 {
   font-size: 17px;
 }
 
-#box{
+#box {
   border: 2px solid #a30000;
-   padding: 10px;
-   text-align: center;
-   width: 80%;
-   height: 60vh;
-   overflow: hidden;
-   background-color: black;
-   margin-top: 3%;
-   margin-bottom: 1%;
+  padding: 10px;
+  text-align: center;
+  width: 80%;
+  height: 60vh;
+  overflow: hidden;
+  background-color: black;
+  margin-top: 3%;
+  margin-bottom: 1%;
 }
 
 #loginPage {
@@ -390,8 +370,8 @@ box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
   padding-top: 12rem;
 }
 
-#logoLoginPage h1{
-  font-family: 'KeaniaOne', sans-serif;
+#logoLoginPage h1 {
+  font-family: "KeaniaOne", sans-serif;
   font-weight: normal;
   font-size: 42px;
   margin-top: -10px;
@@ -407,18 +387,16 @@ box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
   gap: 2rem;
 }
 
-
 #formBlock p {
   color: white;
   font-size: small;
 }
 
 #loginButton {
-
   --border: 1px;
   --slant: 0rem;
   --slant1: 7rem;
-  --color: #BB271A;
+  --color: #bb271a;
 
   color: var(--color);
 
@@ -430,31 +408,38 @@ box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
   border-width: 0px;
   cursor: pointer;
 
-  background: linear-gradient(to top right,var(--color)  100%,#0000 100%) bottom left ;
-  background-size:calc(var(--slant) + 1.3*var(--border)) calc(var(--slant1) + 1.3*var(--border));
+  background: linear-gradient(to top right, var(--color) 100%, #0000 100%)
+    bottom left;
+  background-size: calc(var(--slant) + 1.3 * var(--border))
+    calc(var(--slant1) + 1.3 * var(--border));
   background-repeat: no-repeat;
-  box-shadow: 0 0 0 200px inset var(--s,#0000),
- 0 0 0 var(--border) inset var(--color);
+  box-shadow: 0 0 0 200px inset var(--s, #0000),
+    0 0 0 var(--border) inset var(--color);
 
- clip-path: polygon(0 0, calc(100% - var(--slant)) 0, 100% var(--slant),
- 100% 100%, var(--slant) 100%,0 calc(100% - var(--slant)));
+  clip-path: polygon(
+    0 0,
+    calc(100% - var(--slant)) 0,
+    100% var(--slant),
+    100% 100%,
+    var(--slant) 100%,
+    0 calc(100% - var(--slant))
+  );
 
- transition:color var(--t,0.5s), background-size 0.5s ;
+  transition: color var(--t, 0.5s), background-size 0.5s;
 }
 
-#loginButton:focus-visible{
-  outline-offset: calc(-1*var(--border));
+#loginButton:focus-visible {
+  outline-offset: calc(-1 * var(--border));
   outline: var(--border) solid #000c;
   clip-path: none;
   background-size: 0 0;
 }
 
-#loginButton.load{
+#loginButton.load {
   background-size: 100% 100%;
   color: white;
   --t: 0.5s 0.5s;
 }
-
 
 #form {
   display: flex;
@@ -474,7 +459,7 @@ box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
   margin-bottom: 1rem;
 }
 
-.formRow input{
+.formRow input {
   padding: 0.3rem;
   width: 10rem;
   border-radius: 15px;
@@ -486,8 +471,8 @@ box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
   margin-right: 1rem;
 }
 
-.outer{
-  position:static;
+.outer {
+  position: static;
   display: flex;
   height: 40px;
   width: 100%;
@@ -501,20 +486,20 @@ box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
   z-index: 2;
 }
 
-.bar{
+.bar {
   position: static;
   height: 40px;
-  background-color:#BB271A;
+  background-color: #bb271a;
   border-radius: 25px;
   margin-left: -1px;
   z-index: 1;
 }
 
-#statBar{
+#statBar {
   width: 70%;
 }
 
-#inner{
+#inner {
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -522,57 +507,56 @@ box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
   justify-content: space-between;
 }
 
-#settings{
+#settings {
   display: flex;
   flex-direction: row;
   width: 100%;
-  height:90vh; 
+  height: 90vh;
 }
 
-#settingBox{
+#settingBox {
   justify-content: center;
   justify-self: center !important;
   margin-left: 20%;
 }
 
-.settingButtons{
+.settingButtons {
   display: flex;
   flex-direction: column;
   width: 10%;
   cursor: pointer;
 }
 
-.bottomArrow{
+.bottomArrow {
   transform: rotate(180deg);
 }
 
-.sett{
+.sett {
   font-size: larger;
   margin-top: 10%;
 }
 
-.sett2{
+.sett2 {
   display: flex;
   align-items: center;
   width: 100%;
   margin-top: 80px;
   font-size: larger;
-  
 }
 
-.sett2 div{
+.sett2 div {
   display: flex;
   flex-direction: row;
   align-items: center;
   margin-left: 120px;
 }
 
-#setTwo{
+#setTwo {
   display: flex;
   flex-direction: column;
 }
 
-#checkbox{
+#checkbox {
   height: 28px;
   width: 30px;
   border: 5px solid black;
@@ -582,17 +566,16 @@ box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
   cursor: pointer;
 }
 
-
-#checkbox.check{
-  background: #BB271A;
+#checkbox.check {
+  background: #bb271a;
 }
 
-#pilot{
+#pilot {
   cursor: pointer;
 }
 
-#pilotSide{
-  background-color:#333333 ;
+#pilotSide {
+  background-color: #333333;
   position: absolute;
   right: 0;
   margin-right: 40px;
@@ -612,13 +595,11 @@ box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
   transition: transform 1s ease-in-out;
 }
 
-#pilotSide.drop{
-  
+#pilotSide.drop {
   transform: translateY(0);
 }
 
-
-#imgHolder{
+#imgHolder {
   background-color: rgb(19, 19, 19);
   align-items: center;
   justify-content: center;
@@ -628,21 +609,21 @@ box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
   margin-left: 13%;
 }
 
-#text{
-  font-family: 'KeaniaOne', sans-serif;
+#text {
+  font-family: "KeaniaOne", sans-serif;
   font-weight: normal;
   text-align: left;
   margin: 15px;
 }
 
-#usernameLogout{
+#usernameLogout {
   margin-top: 25px;
 }
 
-#logout{
-  font-family: 'KeaniaOne', sans-serif;
+#logout {
+  font-family: "KeaniaOne", sans-serif;
   font-weight: normal;
-  background-color: #BB271A;
+  background-color: #bb271a;
   border: black solid 1px;
   box-shadow: rgba(255, 255, 255, 0.24) 0px 3px 3px;
   color: white;
@@ -650,8 +631,8 @@ box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
   text-decoration: none;
   margin-bottom: 25px;
 }
-#logout:hover{
-  background-color:rgb(19, 19, 19);
+#logout:hover {
+  background-color: rgb(19, 19, 19);
   box-shadow: rgba(255, 255, 255, 0.24) 0px 0px 0px;
 }
 
@@ -663,7 +644,6 @@ box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
   align-items: center;
   height: 100vh;
   gap: 2rem;
-
 }
 
 #registerUser {
@@ -695,7 +675,6 @@ box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
   box-shadow: rgb(255, 9, 9) 0px 1px 2px 1px;
 }
 
-
 .registerFeedback {
   color: var(--redItems);
   font-size: small;
@@ -721,11 +700,12 @@ box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
   width: 10rem;
   border: none;
   border-radius: 15px;
-  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
   cursor: pointer;
 }
 
-#registerButton button:hover{
+#registerButton button:hover {
   box-shadow: none;
   background-color: #d8d8d8;
 }
@@ -737,16 +717,16 @@ box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
   .formRow input {
     width: 100%;
   }
-  header{
+  header {
     width: 100%;
   }
-  #logo{
+  #logo {
     margin-right: 50px;
   }
   #burger {
     display: block;
   }
-  #pilot{
+  #pilot {
     display: none;
   }
   #navMenu {
@@ -760,41 +740,42 @@ box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
     gap: 2rem;
     padding: 0.5rem;
   }
-  #settingBox{
+  #settingBox {
     width: 50%;
   }
-  .outer{
+  .outer {
     width: 150%;
     margin-left: -20px;
   }
-  .settingButtons{
+  .settingButtons {
     width: 40px;
   }
-  .sett2{
+  .sett2 {
     margin-left: -50%;
   }
-  .sett2 div{
+  .sett2 div {
     margin-left: 10px;
   }
-  #setTwo{
+  #setTwo {
     padding: 20%;
   }
-  #models{
+  #models {
     width: 100%;
     margin-left: 5%;
   }
-  .App{
+  .App {
     height: 50vh;
   }
-  #box{
+  #box {
     height: 50vh;
   }
-  #bottom{
+  #bottom {
     margin-bottom: -200px;
   }
 
   #generalStatsContainer {
     flex-direction: column;
+    margin-left: 2rem;
   }
 }
 
@@ -804,7 +785,7 @@ box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color:#333333;
+  background-color: #333333;
 }
 
 #loading-container {
@@ -820,7 +801,13 @@ box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
 }
 
 @keyframes fly {
-  0% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-50px) rotate(180deg); }
-  100% { transform: translateY(0) rotate(360deg); }
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-50px) rotate(180deg);
+  }
+  100% {
+    transform: translateY(0) rotate(360deg);
+  }
 }
