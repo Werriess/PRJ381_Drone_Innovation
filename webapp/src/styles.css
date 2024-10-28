@@ -206,8 +206,7 @@ nav.hide{
   justify-content: center;
   padding-left: 3%;
   margin-left: 7%;
-  overflow: hidden;
-  bottom: 0;
+  margin-bottom: -350px;
 }
 
 #stats {
@@ -223,6 +222,8 @@ nav.hide{
   margin-top: 1rem;
 }
 
+
+
 #statsLeft {
   display: flex;
   flex-direction: column;
@@ -235,6 +236,20 @@ nav.hide{
   display: flex;
   flex-direction: column;
   gap: 5rem;
+  padding: 20px;
+}
+
+#statsRight h1 {
+font-size: 20px;
+background-color: rgb(236, 236, 236);
+height: 2rem;
+width: 100%;
+margin-top: 0px;
+padding-top: 10px;
+margin-left: 0px;
+border-top-left-radius: 0.5rem;
+border-top-right-radius: 0.5rem;
+box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
 }
 
 .liveDataContainer {
@@ -262,6 +277,19 @@ nav.hide{
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   width: 6rem;
   border-radius: 0.5rem;
+  padding: 10px;
+}
+.pilotInfoBlock h1{
+  font-size: 16px;
+  background-color: rgb(236, 236, 236);
+  height: 2rem;
+  width: 7.23rem;
+  margin-top: -10px;
+  padding-top: 10px;
+  margin-left: -10px;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
 }
 
 .pilotInfo h1 {
@@ -272,6 +300,19 @@ nav.hide{
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   width: 100%;
   border-radius: 0.5rem;
+  padding: 20px;
+}
+.expiditionInfoBlock h1{
+  font-size: 20px;
+  background-color: rgb(236, 236, 236);
+  height: 2rem;
+  width: 110%;
+  margin-top: -20px;
+  padding-top: 10px;
+  margin-left: -20px;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
 }
 
 .expiditionInfoBlock h1 {
@@ -281,6 +322,9 @@ nav.hide{
 #expidition {
   width: 100%;
   color: var(--redItems);
+  height: 2rem;
+  border-radius: 12px;
+  padding-left: 8px;
 }
 
 .expiditionDropDown {
@@ -301,8 +345,22 @@ nav.hide{
 
 #specs{
   background-color: #7b7b7b91;
-  height: 18vh;
+  height: 50vh;
   width: 80vw;
+  display: flex;
+  margin-bottom: 20px;
+  overflow-y: scroll;
+  overflow-x: scroll;
+}
+#specs div{
+  text-align: left;
+  margin-right: 90px;
+  margin-top: 20px;
+  margin-left: 30px;
+}
+
+#specs div h1{
+  font-size: 17px;
 }
 
 #box{
@@ -732,7 +790,7 @@ nav.hide{
     height: 50vh;
   }
   #bottom{
-    margin-bottom: 80px;
+    margin-bottom: -200px;
   }
 
   #generalStatsContainer {

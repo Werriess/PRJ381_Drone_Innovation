@@ -17,7 +17,7 @@ import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
 import { Suspense } from "react";
 
 const Model = () => {
-    const gltf = useLoader(GLTFLoader, "../src/assets/brain_compressed.gltf", (loader) => {
+    const gltf = useLoader(GLTFLoader, "../src/assets/DRONE.gltf", (loader) => {
       const dracoLoader = new DRACOLoader();
       dracoLoader.setDecoderPath("https://www.gstatic.com/draco/v1/decoders/");
       loader.setDRACOLoader(dracoLoader);

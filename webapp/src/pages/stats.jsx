@@ -1,6 +1,7 @@
 import "../styles.css";
 import Header from "../components/Header";
 import NavMenu from "../components/NavMenu";
+import { PieChart } from '@mui/x-charts/PieChart ';
 
 const Stats = () => {
   return (
@@ -68,7 +69,13 @@ const Stats = () => {
               </table>
             </section>
             <section className="piChart">
-              <img src="/piChart.png" alt="piChart" />
+            <PieChart series={[
+          {data: [
+            {id: 0, value: 10, label: 'Series A'},
+            {id: 1, value: 20, label: 'Series B'},
+            {id: 2, value: 15, label: 'Series C'},
+          ],},
+        ]} width={400} height={200} />
             </section>
           </section>
           <section id="statsRight">
