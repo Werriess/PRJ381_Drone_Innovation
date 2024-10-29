@@ -49,14 +49,15 @@ async function generateDroneLogs(num, droneIds) {
     droneLogsArr.push({
       droneID: faker.helpers.arrayElement(droneIds),  // Provide some drone IDs
       timestamp: faker.date.past(),
-      gasStats: Array.from({ length: faker.datatype.number({ min: 1, max: 5 }) }).map(() => ({
+      gasStats: Array.from({ length: faker.number.int({ min: 1, max: 5 }) }).map(() => ({
         detectionStatus: faker.helpers.arrayElement(["Safe", "Warning", "Dangerous"]),
-        detectionValue: faker.datatype.number({ min: 70, max: 990 }),
+        detectionValue: faker.number.int({ min: 70, max: 990 }),
+
       })),
-      route: Array.from({ length: faker.datatype.number({ min: 1, max: 5 }) }).map(() => ({
+      route: Array.from({ length: faker.number.int({ min: 1, max: 5 }) }).map(() => ({
         latitude: faker.location.latitude(),
         longitude: faker.location.longitude(),
-        altitude: faker.datatype.number({ min: 100, max: 1000 }),
+        altitude: faker.number.int({ min: 100, max: 1000 }),
       })),
     });
   }
@@ -69,7 +70,7 @@ async function generateExpeditions(num, droneIds) {
 
   for (let i = 0; i < num; i++) {
     const startTime = faker.date.past();
-    const endTime = new Date(startTime.getTime() + faker.datatype.number({ min: 1, max: 5 }) * 60 * 60 * 1000); // Adds 1 to 5 hours to startTime
+    const endTime = new Date(startTime.getTime() + faker.number.int({ min: 1, max: 5 }) * 60 * 60 * 1000); // Adds 1 to 5 hours to startTime
 
     expeditionsArr.push({
       droneID: faker.helpers.arrayElement(droneIds),  // Provide some drone IDs
@@ -80,9 +81,9 @@ async function generateExpeditions(num, droneIds) {
         longitude: faker.location.longitude(),
       },
       gasStats: {
-        avgValue: faker.datatype.float({ min: 70, max: 990 }),
-        highestValue: faker.datatype.float({ min: 70, max: 990 }),
-        lowestValue: faker.datatype.float({ min: 70, max: 990 }),
+        avgValue: faker.number.float({ min: 70, max: 990 }),
+        highestValue: faker.number.float({ min: 70, max: 990 }),
+        lowestValue: faker.number.float({ min: 70, max: 990 }),
       },
     });
   }
@@ -110,8 +111,8 @@ async function generateFeedbacks(num, userIds) {
     feedbackArr.push({
       userID: faker.helpers.arrayElement(userIds),  // Provide some user IDs
       timestamp: faker.date.recent(),
-      rating: faker.datatype.number({ min: 1, max: 5 }),  // Ratings from 1 to 5
-      comments: faker.lorem.sentences(faker.datatype.number({ min: 1, max: 3 })),
+      rating: faker.number.int({ min: 1, max: 5 }),  // Ratings from 1 to 5
+      comments: faker.lorem.sentences(faker.number.int({ min: 1, max: 3 })),
     });
   }
 
