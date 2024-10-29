@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 8001;
 connectDB().then(() => {
     app.listen(PORT, async () => {
         console.log(`App is running on ${PORT}`);
-        await seedDatabase(); 
+        await seedDatabase();
     });
 }).catch((error) => {
     console.error('Database connection failed:', error);

@@ -13,9 +13,9 @@ const expeditionSchema = new mongoose.Schema({
     longitude: { type: Number, required: true },
   },
   gasStats: {
-    avgConcentration: { type: Number, required: true },
-    highestConcentration: { type: Number, required: true },
-    lowestConcentration: { type: Number, required: true },
+    avgValue: { type: Number, required: true },
+    highestValue: { type: Number, required: true },
+    lowestValue: { type: Number, required: true },
   },
 });
 
