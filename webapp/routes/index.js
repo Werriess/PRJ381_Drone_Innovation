@@ -1,26 +1,23 @@
-import express from 'express';
-import Register from '../models/register.js';
+import express from "express";
+import fs from "fs";
+import { dirname } from "path";
+import { fileURLToPath } from "url";
+import path from "path";
 
-const registerRouter = express.Router();
+const router = express.Router();
 
-registerRouter.post("/submit", async (req, res) => {
-    const { firstName, lastName, emailAddress, username, password } = req.body;
-
-    try {
-        const newRegister = new Register({
-            firstName,
-            lastName,
-            emailAddress,
-            username,
-            password
-        });
-
-        await newRegister.save();
-        res.send(req.body);
-    } catch (error) {
-        console.error('Error saving user:', error);
-        res.status(500).json({ message: 'Error saving user.' });
+async function loadRoutes(router) {
+  const __dirname = dirname(fileURLToPath(import.meta.url));
+  const apiPath = path.join(__dirname, "api");
+  const files = fs.readdirSync(apiPath);
+  for (const file of files) {
+    if (file.endsWith(".js")) {
+      const route = await import(path.join(apiPath, file));
+      router.use(route.default);
     }
-})
+  }
+}
 
-export default registerRouter;
+await loadRoutes(router);
+
+export default router;
