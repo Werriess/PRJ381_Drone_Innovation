@@ -1,5 +1,5 @@
 import connectDB from './config/db.js';
-//import seedDatabase from './src/js/seed.js';
+import seedDatabase from './src/js/seed.js';
 import app from './config/express.js';
 import dotenv from 'dotenv';
 import { join, dirname } from 'path';
@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 8001;
 connectDB().then(() => {
     app.listen(PORT, async () => {
         console.log(`App is running on ${PORT}`);
-        //await seedDatabase(); 
+        await seedDatabase(); 
     });
 }).catch((error) => {
     console.error('Database connection failed:', error);
