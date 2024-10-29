@@ -1,20 +1,14 @@
 import mongoose from "mongoose";
+import { v4 as uuidv4 } from "uuid";
 
 const droneSchema = new mongoose.Schema({
-  timestamp: { type: Date, default: Date.now },
-  gasStats: [
-    {
-      gasType: { type: String, required: true },
-      concentration: { type: Number, required: true },
+    droneNum: {
+        type: String,
+        default: uuidv4,
+        unique: true,
+        required: true,
     },
-  ],
-  route: [
-    {
-      latitude: { type: Number, required: true },
-      longitude: { type: Number, required: true },
-      altitude: { type: Number, required: true },
-    },
-  ],
+    droneType: { type: String, required: true },
 });
 
 const Drone = mongoose.model("Drone", droneSchema);
