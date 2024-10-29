@@ -11,27 +11,27 @@ function Login() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     setIsLoading(true);
-  
+
     try {
-      const response = await fetch("/login", {
+      const response = await fetch("/api/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ username, password }),
       });
-  
+
       const data = await response.json();
 
       if (response.ok) {
         const accessToken = data.accessToken;
-  
+
         Cookies.set("accessToken", accessToken, {
           expires: 1,
           sameSite: "None",
           secure: true,
         });
-        
+
         setTimeout(() => {
           window.location.href = "/info";
         }, 2000);
@@ -48,12 +48,9 @@ function Login() {
         setIsLoading(false);
       }, 2000);
     }
-  
-    localStorage.setItem("username", username);
 
-    
+    localStorage.setItem("username", username);
   };
-  
 
   const handleRegisterNavigate = () => {
     window.location.href = "/register";
@@ -90,7 +87,11 @@ function Login() {
             />
           </div>
           {error && <p className="error">{error}</p>}
-          <button type="submit" id="loginButton" className={isLoading ? "load": ""}>
+          <button
+            type="submit"
+            id="loginButton"
+            className={isLoading ? "load" : ""}
+          >
             {isLoading ? "Completed" : "Verify"}
           </button>
           <p>

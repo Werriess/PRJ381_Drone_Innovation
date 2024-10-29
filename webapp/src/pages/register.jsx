@@ -14,7 +14,7 @@ function Register() {
     event.preventDefault();
 
     try {
-      const response = await fetch("/register/submit", {
+      const response = await fetch("/api/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -37,7 +37,6 @@ function Register() {
         setTimeout(() => {
           window.location.href = "/";
         }, 2000);
-        
       } else {
         setError(data.message);
         setRegisterUser("");
