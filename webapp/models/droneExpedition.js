@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+const Drone = require('./drone');
 
 const droneExpeditionSchema = new mongoose.Schema({
   droneID: {

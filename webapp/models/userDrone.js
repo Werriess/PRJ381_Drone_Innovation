@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const userDroneSchema = new mongoose.Schema({
   userID: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: mongoose.Schema.Types.userID,
     ref: "Register",
     required: true,
   },

@@ -1,6 +1,11 @@
 import mongoose from "mongoose";
 
-const droneSchema = new mongoose.Schema({
+const droneLogSchema = new mongoose.Schema({
+  droneID: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Drone",
+    required: true,
+  },
   timestamp: { type: Date, default: Date.now },
   gasStats: [
     {
@@ -17,5 +22,5 @@ const droneSchema = new mongoose.Schema({
   ],
 });
 
-const Drone = mongoose.model("Drone", droneSchema);
-export default Drone;
+const DroneLog = mongoose.model("DroneLog", droneLogSchema);
+export default DroneLog;
