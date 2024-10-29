@@ -29,7 +29,7 @@ loginRouter.post("/login", async (req, res) => {
     res.json({ message: "Login successful", accessToken });
   } catch (error) {
     console.error("Error during login:", error);
-    res.status(500).json({ message: "Internal server error" });
+    res.status(500).json({ message: error });
   }
 });
 

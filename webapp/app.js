@@ -8,7 +8,7 @@ import { fileURLToPath } from 'url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 dotenv.config({ path: join(__dirname, '.env') });
 
-const PORT = process.env.PORT || 8001;
+const PORT = process.env.PORT || 8000;
 
 connectDB().then(() => {
     app.listen(PORT, async () => {

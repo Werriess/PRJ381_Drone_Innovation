@@ -63,7 +63,7 @@ header img {
   top: 5rem;
   left: 8rem;
   width: 100px;
-  background-color: #333;
+  background-color: #333333;
   color: white;
   display: flex;
   justify-content: center;
@@ -316,6 +316,13 @@ table tbody tr {
   height: 100%;
 }
 
+#mainSpecs #models{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+}
+
 #statsContent {
   display: flex;
   width: 100%;
@@ -358,8 +365,12 @@ table tbody tr {
 
 #box {
   flex: 1; 
-  max-width: 750px; 
-  height: auto; 
+  max-width: 90%; 
+}
+
+#canvas{
+  height: 600px !important;
+  background-color: #333333;
 }
 
 #loginPage {
