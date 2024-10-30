@@ -17,9 +17,13 @@ loginRouter.post("/login", async (req, res) => {
       return res.status(401).json({ message: "Invalid username or password" });
     }
 
-    const accessToken = jwt.sign({ username }, process.env.DIY_JWT_SECRET, {
-      expiresIn: "1h",
-    });
+    const accessToken = jwt.sign(
+      { username: user.username, id: user._id },
+      process.env.DIY_JWT_SECRET,
+      {
+        expiresIn: "1h",
+      }
+    );
 
     // const match = await bcrypt.compare(password, user.password);
     // if (!match) {
