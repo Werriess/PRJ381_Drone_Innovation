@@ -14,8 +14,8 @@ function isAuthenticated(req, res, next) {
     if (err) {
       return res.status(401).json({ message: "Failed to authenticate token" });
     }
-
-    req.user = { _id: decoded._id };
+    req.user = { id: decoded.id };
+    console.log(decoded);
     next();
   });
 }

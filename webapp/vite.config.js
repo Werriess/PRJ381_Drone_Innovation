@@ -12,7 +12,8 @@ export default defineConfig({
     proxy: {
       '/api': 'http://webapp:8000',
       '/api/register': 'http://webapp:8000',
-      '/api/login': 'http://webapp:8000'  
+      '/api/login': 'http://webapp:8000',
+      '/api/stats/drones': 'http://webapp:8000', 
     },
   },
 })

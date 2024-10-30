@@ -9,6 +9,7 @@ const droneSchema = new mongoose.Schema({
         required: true,
     },
     droneType: { type: String, required: true },
+    flightHours: {type: Number, required: false}
 });
 
 const Drone = mongoose.model("Drone", droneSchema);
