@@ -4,6 +4,8 @@ import NavMenu from "../components/NavMenu";
 import { PieChart } from "@mui/x-charts/PieChart";
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
+import generateEmbeddedGoogleMapsLink from "../../middleware/googleAPI";
+
 
 const Stats = () => {
   const [droneData, setDroneData] = useState({});
@@ -46,6 +48,12 @@ const Stats = () => {
 
     fetchDroneData();
   }, [droneID]);
+
+  const mapUrl = expeditionData.length > 0 && expeditionData[0].location ?
+    generateEmbeddedGoogleMapsLink(
+      expeditionData[0].location.latitude,
+      expeditionData[0].location.longitude
+    ) : "";
 
   return (
     <div id="stats">
@@ -173,7 +181,7 @@ const Stats = () => {
             </section>
             <section className="googleMapsContainer">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d920450.6469856643!2d26.086604978125003!3d-25.687521799999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1ebe0ef086c024a7%3A0x591f1db201ba8b74!2sBathopele%20platinum%20Mine!5e0!3m2!1sen!2sza!4v1729602420324!5m2!1sen!2sza"
+                src={mapUrl}
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
