@@ -25,7 +25,7 @@ function Login() {
 
       if (response.ok) {
         const accessToken = data.accessToken;
-
+        localStorage.setItem("token", accessToken);
         Cookies.set("accessToken", accessToken, {
           expires: 1,
           sameSite: "None",
@@ -50,6 +50,7 @@ function Login() {
     }
 
     localStorage.setItem("username", username);
+    
   };
 
   const handleRegisterNavigate = () => {

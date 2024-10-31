@@ -288,13 +288,7 @@ nav.hide {
   width: 100%;
 }
 
-.expeditionScrollContainer {
-  max-height: 400px;
-  overflow-y: auto; 
-  padding-right: 1rem; 
-}
-
-.expeditionInfoBlock h1 u{
+.expiditionInfoBlock h1 {
   color: var(--redItems);
 }
 
@@ -314,16 +308,6 @@ table tbody tr {
 .expiditionDropDown {
   width: 100%;
 }
-
-.expeditionCard {
-  border: 1px solid rgb(148, 148, 148);
-  border-radius: 0.5rem;
-  margin: 1rem;
-  padding: 1rem;
-  background-color: rgb(249, 249, 249); 
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
-}
-
 
 #mainSpecs {
   display: flex;
@@ -505,7 +489,7 @@ table tbody tr {
   margin-right: 1rem;
 }
 
-.outer {
+/*.outer {
   position: static;
   display: flex;
   height: 40px;
@@ -539,7 +523,7 @@ table tbody tr {
   width: 100%;
   align-items: center;
   justify-content: space-between;
-}
+}*/
 
 #settings {
   display: flex;
@@ -548,7 +532,108 @@ table tbody tr {
   height: 90vh;
 }
 
-#settingBox {
+#top{
+  display: flex;
+  height: 500px;
+  margin-bottom: 50px;
+}
+
+#top div{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  justify-content: space-between;
+  padding: 30px;
+}
+
+#updateContainer{
+  padding: 30px;
+  width: 70%;
+  height: 80%;
+  margin-top: 30px;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+
+.updateForm{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+  gap: 2rem;
+  padding: 60px;
+}
+
+.updateForm input {
+  padding: 0.5rem;
+  width: 300px;
+  border-radius: 15px;
+  border: none;
+  box-shadow: rgba(255, 9, 9, 0.427) 0px 1px 2px 1px;
+}
+
+#updateButton {
+  display: flex;
+  margin-top: 2rem;
+  justify-content: space-between;
+  width: 80%;
+  margin-left: 30px;
+}
+
+#change{
+  display: block;
+}
+
+#change.hide{
+  display: none;
+}
+
+#update{
+  display: none;
+}
+
+#update.show{
+  display: block;
+}
+
+#editForm input{
+  display: none;
+}
+#editForm.show input{
+  display: block;
+}
+
+#passForm input {
+  display: none;
+}
+#passForm.show input{
+  display: block;
+}
+
+#passUpdate{
+  display: none;
+}
+#passUpdate.show{
+  display: block;
+}
+
+.button{
+  padding: 0.5rem;
+  width: 10rem;
+  border: none;
+  border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  cursor: pointer;
+}
+
+.button:hover{
+  box-shadow: none;
+  background-color:#bb271a;
+  color: white;
+}
+
+/*#settingBox {
   justify-content: center;
   justify-self: center !important;
   margin-left: 20%;
@@ -602,7 +687,7 @@ table tbody tr {
 
 #checkbox.check {
   background: #bb271a;
-}
+}*/
 
 #pilot {
   cursor: pointer;
@@ -693,6 +778,8 @@ table tbody tr {
   padding-bottom: 7rem;
 }
 
+
+
 #leftSide {
   display: flex;
   flex-direction: column;
@@ -727,6 +814,7 @@ table tbody tr {
 #registerButton {
   display: flex;
   margin-top: 2rem;
+  justify-content: space-between;
 }
 
 #registerButton button {

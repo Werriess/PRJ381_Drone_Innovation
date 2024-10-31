@@ -14,21 +14,21 @@ loginRouter.post("/login", async (req, res) => {
   try {
     const user = await Register.findOne({ username });
     if (!user) {
-      return res.status(401).json({ message: "Invalid username or password" });
+      return res.status(401).json({ message: "Invalid username " });
     }
 
     const accessToken = jwt.sign(
-      { username: user.username, id: user._id },
+      { username: user.username, id: user.id },
       process.env.DIY_JWT_SECRET,
       {
         expiresIn: "1h",
       }
     );
 
-    // const match = await bcrypt.compare(password, user.password);
-    // if (!match) {
-    //   return res.status(401).json({ message: "Invalid username or password" });
-    // }
+     const match = await bcrypt.compare(password, user.password);
+     if (!match) {
+       return res.status(401).json({ message: "Invalid password" });
+     }
 
     res.json({ message: "Login successful", accessToken });
   } catch (error) {
