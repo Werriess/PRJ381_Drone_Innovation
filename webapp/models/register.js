@@ -1,5 +1,8 @@
-import mongoose from "mongoose";
-import bcrypt from "bcrypt";
+const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
+
+//import mongoose from "mongoose";
+//import bcrypt from "bcrypt";
 
 const registerSchema  = new mongoose.Schema({
     firstName: {
@@ -43,4 +46,6 @@ registerSchema.pre("save", async function(next) {
 registerSchema.set("autoIndex", true);
 
 const Register = mongoose.model("Register", registerSchema);
-export default Register;
+
+module.exports = Register;
+//export default Register;

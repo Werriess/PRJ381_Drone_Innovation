@@ -1,5 +1,8 @@
-import express from "express";
-import Register from "../../models/register.js";
+const express = require("express");
+const Register = require("../../models/register.js");
+
+//import express from "express";
+//import Register from "../../models/register.js";
 
 const registerRouter = express.Router();
 
@@ -25,4 +28,6 @@ registerRouter.post("/register", async (req, res) => {
   }
 });
 
-export default registerRouter;
+module.exports = registerRouter;
+
+//export default registerRouter;
