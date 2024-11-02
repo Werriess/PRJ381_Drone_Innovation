@@ -292,6 +292,21 @@ nav.hide {
   color: var(--redItems);
 }
 
+.expeditionScrollContainer {
+  max-height: 400px;
+  overflow-y: auto; 
+  padding-right: 1rem; 
+}
+
+.expeditionCard {
+  border: 1px solid rgb(148, 148, 148);
+  border-radius: 0.5rem;
+  margin: 1rem;
+  padding: 1rem;
+  background-color: rgb(249, 249, 249); 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+}
+
 table tbody tr {
   display: flex;
   justify-content: space-between;

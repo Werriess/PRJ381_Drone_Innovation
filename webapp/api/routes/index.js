@@ -1,23 +1,27 @@
 import express from "express";
 import fs from "fs";
+import path from "path";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
-import path from "path";
 
 const router = express.Router();
 
-async function loadRoutes(router) {
+async function loadRoutes(folder) {
   const __dirname = dirname(fileURLToPath(import.meta.url));
-  const apiPath = path.join(__dirname, "api");
-  const files = fs.readdirSync(apiPath);
+  const folderPath = path.join(__dirname, folder);
+  const files = fs.readdirSync(folderPath);
+
   for (const file of files) {
     if (file.endsWith(".js")) {
-      const route = await import(path.join(apiPath, file));
+      const route = await import(path.join(folderPath, file));
       router.use(route.default);
     }
   }
 }
 
-await loadRoutes(router);
+(async () => {
+  await loadRoutes("auth");
+  await loadRoutes("components");
+})();
 
 export default router;

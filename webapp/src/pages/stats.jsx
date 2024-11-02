@@ -2,58 +2,22 @@ import "../styles.css";
 import Header from "../components/Header";
 import NavMenu from "../components/NavMenu";
 import { PieChart } from "@mui/x-charts/PieChart";
-import { useEffect, useState } from "react";
-import Cookies from "js-cookie";
+import { useState } from "react";
 import generateEmbeddedGoogleMapsLink from "../../middleware/googleAPI";
-
+import useFetchDroneData from "../hooks/useDroneData";
 
 const Stats = () => {
-  const [droneData, setDroneData] = useState({});
   const [droneID, setDroneID] = useState("");
-  const [expeditionData, setExpeditionData] = useState([]);
+  
+  const { droneData, expeditionData, error } = useFetchDroneData(droneID);
 
-  const getAccessToken = () => {
-    return Cookies.get("accessToken");
-  };
-
-  useEffect(() => {
-    const fetchDroneData = async () => {
-      if (droneID) {
-        try {
-          const response = await fetch(`/api/stats/drones/${droneID}`, {
-            headers: {
-              Authorization: `Bearer ${getAccessToken()}`,
-            },
-          });
-
-          if (!response.ok) {
-            const errorDetails = await response.text();
-            throw new Error(
-              `Failed to fetch data: ${response.status} ${errorDetails}`
-            );
-          }
-
-          const data = await response.json();
-          console.log(data);
-          setDroneData(data);
-
-          if (data.expeditionData && data.expeditionData.length > 0) {
-            setExpeditionData(data.expeditionData);
-          }
-        } catch (error) {
-          console.error("Error fetching drone data:", error);
-        }
-      }
-    };
-
-    fetchDroneData();
-  }, [droneID]);
-
-  const mapUrl = expeditionData.length > 0 && expeditionData[0].location ?
-    generateEmbeddedGoogleMapsLink(
-      expeditionData[0].location.latitude,
-      expeditionData[0].location.longitude
-    ) : "";
+  const mapUrl =
+    expeditionData.length > 0 && expeditionData[0].location
+      ? generateEmbeddedGoogleMapsLink(
+          expeditionData[0].location.latitude,
+          expeditionData[0].location.longitude
+        )
+      : "";
 
   return (
     <div id="stats">
@@ -161,21 +125,11 @@ const Stats = () => {
                 <u>Live data:</u>
               </h1>
               <div>
+                {/* You can replace this with actual live data as needed */}
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat
                 suscipit asperiores obcaecati non ad quam, eum reprehenderit
                 expedita laboriosam illo eligendi eius voluptates eveniet quia
-                magni iusto consequatur repudiandae quas! Lorem ipsum dolor sit
-                amet consectetur adipisicing elit. Omnis aperiam dolorum aut,
-                sint quidem facere quas neque similique. Enim veniam repellendus
-                nemo officiis eius itaque dicta ratione nobis reiciendis
-                obcaecati! Lorem ipsum dolor sit amet consectetur adipisicing
-                elit. Placeat suscipit asperiores obcaecati non ad quam, eum
-                reprehenderit expedita laboriosam illo eligendi eius voluptates
-                eveniet quia magni iusto consequatur repudiandae quas! Lorem
-                ipsum dolor sit amet consectetur adipisicing elit. Omnis aperiam
-                dolorum aut, sint quidem facere quas neque similique. Enim
-                veniam repellendus nemo officiis eius itaque dicta ratione nobis
-                reiciendis obcaecati!
+                magni iusto consequatur repudiandae quas!
               </div>
               <div>286.7</div>
             </section>
@@ -192,6 +146,13 @@ const Stats = () => {
             </section>
           </section>
         </section>
+
+        {error && (
+          <div style={{ color: "red" }}>
+            <h2>Error fetching drone data:</h2>
+            <p>{error.message}</p>
+          </div>
+        )}
       </section>
     </div>
   );
