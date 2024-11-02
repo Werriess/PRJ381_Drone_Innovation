@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../styles.css";
 import Cookies from "js-cookie";
+import { login } from "../api/routes/auth/login";
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -13,19 +14,10 @@ function Login() {
     setIsLoading(true);
 
     try {
-      const response = await fetch("/api/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username, password }),
-      });
+      const data = await login(username, password);
 
-      const data = await response.json();
-
-      if (response.ok) {
+      if (data.accessToken) {
         const accessToken = data.accessToken;
-        localStorage.setItem("token", accessToken);
         Cookies.set("accessToken", accessToken, {
           expires: 1,
           sameSite: "None",

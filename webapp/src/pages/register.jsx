@@ -1,5 +1,6 @@
 import "../styles.css";
 import { useState } from "react";
+import { registerUser } from "../api/routes/auth/register";
 
 function Register() {
   const [firstName, setFirstName] = useState("");
@@ -7,42 +8,36 @@ function Register() {
   const [emailAddress, setEmailAddress] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
-  const [registerUser, setRegisterUser] = useState("");
+  const [registerUserMessage, setRegisterUserMessage] = useState("");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    try {
-      const response = await fetch("/api/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          firstName,
-          lastName,
-          emailAddress,
-          username,
-          password,
-        }),
-      });
+    if (password !== confirmPassword) {
+      setError("Passwords do not match.");
+      setRegisterUserMessage("");
+      return;
+    }
 
-      const data = await response.json();
+    const { success, message } = await registerUser({
+      firstName,
+      lastName,
+      emailAddress,
+      username,
+      password,
+    });
 
-      if (response.ok) {
-        setRegisterUser("Registered succesfully!");
-        setError("");
-
-        setTimeout(() => {
-          window.location.href = "/";
-        }, 2000);
-      } else {
-        setError(data.message);
-        setRegisterUser("");
-      }
-    } catch (error) {
-      setError("An error occurred. Please try again.");
+    if (success) {
+      setRegisterUserMessage(message);
+      setError("");
+      setTimeout(() => {
+        window.location.href = "/";
+      }, 2000);
+    } else {
+      setError(message);
+      setRegisterUserMessage("");
     }
   };
 
@@ -107,10 +102,12 @@ function Register() {
             name="confirmPassword"
             id="confirmPassword"
             placeholder="Confirm password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
             required
           />
-          <div className="registerFeedback">{registerUser}</div>
-          <div className="registerFeedback">{error}</div>
+          <div className="registerFeedback">{registerUserMessage}</div>
+          <div className="registerFeedback error">{error}</div>
           <div id="registerButton">
             <button type="submit">Register</button>
           </div>
