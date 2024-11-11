@@ -28,12 +28,19 @@ function Settings() {
     const fetchUserData = async () => {
       try {
         const token = Cookies.get("accessToken");
+        if(!token){
+          setError("No Authentication token found.");
+          return;
+        }
+
         const response = await fetch("/api/settings/getUser", {
           method: "GET",
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
+
+
         const data = await response.json();
         if (response.ok) {
           setFirstName(data.firstName);
@@ -99,7 +106,7 @@ function Settings() {
         setPassword(""); 
         setError("");
       } else {
-        setError("Failed to update user.");
+        setError("Failed to update user." + data.message);
       }
     } catch (error) {
       console.error(error);
