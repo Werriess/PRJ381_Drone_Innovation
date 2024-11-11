@@ -3,13 +3,13 @@ import Header from "../components/Header";
 import NavMenu from "../components/NavMenu";
 import { PieChart } from "@mui/x-charts/PieChart";
 import { useState } from "react";
-import generateEmbeddedGoogleMapsLink from "../../middleware/googleAPI";
+import generateEmbeddedGoogleMapsLink from "../../../server/middleware/googleAPI";
 import useFetchDroneData from "../hooks/useDroneData";
 
 const Stats = () => {
   const [droneID, setDroneID] = useState("");
-  
-  const { droneData, expeditionData, error } = useFetchDroneData(droneID);
+
+  const { droneData, expeditionData} = useFetchDroneData(droneID);
 
   const mapUrl =
     expeditionData.length > 0 && expeditionData[0].location
@@ -146,13 +146,6 @@ const Stats = () => {
             </section>
           </section>
         </section>
-
-        {error && (
-          <div style={{ color: "red" }}>
-            <h2>Error fetching drone data:</h2>
-            <p>{error.message}</p>
-          </div>
-        )}
       </section>
     </div>
   );

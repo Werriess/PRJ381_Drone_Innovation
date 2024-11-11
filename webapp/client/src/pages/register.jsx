@@ -48,7 +48,7 @@ function Register() {
   return (
     <div id="register">
       <div id="pilotHat">
-        <img src="src/assets/AirPilotHat.svg" alt="Air Pilot Hat" />
+        <img src="./assets/AirPilotHat.svg" alt="Air Pilot Hat" />
       </div>
       <div id="registerContainer">
         <form onSubmit={handleSubmit} id="leftSide">

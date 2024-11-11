@@ -1,14 +1,13 @@
 import React from "react";
 import { createBrowserRouter } from "react-router-dom";
 import Cookies from "js-cookie";
-import ProtectedRoute from "../components/protectedRoute";
+import ProtectedRoute from "./protectedRoute";
 import Login from "../pages/login";
 import Info from "../pages/info";
 import Settings from "../pages/settings";
 import Stats from "../pages/stats";
 import Specs from "../pages/specs";
 import Register from "../pages/register";
-
 
 const getAccessToken = () => {
   return Cookies.get("accessToken");
@@ -26,7 +25,7 @@ const Router = createBrowserRouter([
   },
   {
     path: "/register",
-    element: <Register/>,
+    element: <Register />,
     index: true,
   },
   {
@@ -42,9 +41,7 @@ const Router = createBrowserRouter([
       },
       {
         path: "/specs",
-        element: (
-          <Specs />
-        ),
+        element: <Specs />,
       },
       {
         path: "/settings",

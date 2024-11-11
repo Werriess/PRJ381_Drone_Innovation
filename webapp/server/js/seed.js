@@ -1,11 +1,11 @@
 import { faker } from "@faker-js/faker";
-import Register from "../../models/register.js";
-import Drone from "../../models/drone.js";
-import DroneLog from "../../models/droneLog.js";
-import Expedition from "../../models/expedition.js";
-import DroneExpedition from "../../models/droneExpedition.js";
-import Feedback from "../../models/feedback.js";
-import UserDrone from "../../models/userDrone.js";
+import Register from "../models/register.js";
+import Drone from "../models/drone.js";
+import DroneLog from "../models/droneLog.js";
+import Expedition from "../models/expedition.js";
+import DroneExpedition from "../models/droneExpedition.js";
+import Feedback from "../models/feedback.js";
+import UserDrone from "../models/userDrone.js";
 
 // Change amounts generated here
 const NUMBER_OF_USERS = 30;
