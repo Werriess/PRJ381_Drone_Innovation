@@ -48,8 +48,6 @@ export const updateUserPassword = async (req, res) => {
 
 export const getUser = async (req, res) => {
   try {
-    console.log("REQUEST USERNAME:", req.user.username);
-
     const username = req.user.username;
     const user = await Register.findOne({ username });
 
