@@ -107,7 +107,7 @@ header img {
 
 #overlay {
   max-width: 100%;
-  background-image: url("../src/assets/infoBackground.png");
+  background-image: url("/images/infoBackground.png");
   background-size: contain;
 }
 
@@ -182,7 +182,7 @@ nav.hide {
 }
 
 #arrowButton {
-  background-image: url("../src/assets/redArrow.png");
+  background-image: url("/images/redArrow.png");
   background-repeat: no-repeat;
   background-size: contain;
   height: 100px;

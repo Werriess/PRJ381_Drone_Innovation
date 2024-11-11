@@ -11,7 +11,7 @@ import { GridHelper, Color, Raycaster, Vector2, AmbientLight, DirectionalLight, 
 import { OrbitControls } from "@react-three/drei"
 
 const Model = () => {
-  const gltf = useLoader(GLTFLoader, "../src/assets/DRONE.gltf", (loader) => {
+  const gltf = useLoader(GLTFLoader, "/assets/DRONE.gltf", (loader) => {
     const dracoLoader = new DRACOLoader();
     dracoLoader.setDecoderPath("https://www.gstatic.com/draco/v1/decoders/");
     loader.setDRACOLoader(dracoLoader);

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../styles.css";
 import Cookies from "js-cookie";
-import { login } from "../api/routes/auth/login";
+import { login } from "../api/routes/auth/login.js";
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -52,7 +52,7 @@ function Login() {
   return (
     <div id="loginPage">
       <section id="logoLoginPage">
-        <img src="./src/assets/DroneBottom.svg" alt="Drone Tech Logo" />
+        <img src="/images/droneBottom.svg" alt="Drone Tech Logo" />
         <h1>Drone Tech</h1>
       </section>
       <section id="formBlock">
