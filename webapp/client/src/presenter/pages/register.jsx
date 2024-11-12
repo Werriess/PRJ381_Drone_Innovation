@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { registerUser } from "../../domain/api/routes/auth/register";
+<<<<<<< HEAD
 
+=======
+>>>>>>> a864062fe54c3874512425ce6df2ac4c42a4dcd3
 
 function Register() {
   const [firstName, setFirstName] = useState("");
