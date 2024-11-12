@@ -211,7 +211,7 @@ nav.hide {
 }
 
 #arrowButton {
-  background-image: url("../src/assets/redArrow.png");
+  background-image: url("../../public/images/redArrow.png");
   background-repeat: no-repeat;
   background-size: contain;
   height: 100px;
