@@ -107,15 +107,10 @@ header img {
 
 #overlay {
   max-width: 100%;
-<<<<<<< Updated upstream:webapp/src/styles.css
-  background-image: url("../src/assets/infoBackground.png");
-  background-size: contain;
-=======
   background-image: url("/images/infoBackground.png");
   background-size:cover;
   background-repeat: no-repeat;
   background-position: center;
->>>>>>> Stashed changes:webapp/client/src/styles.css
 }
 
 #models {
