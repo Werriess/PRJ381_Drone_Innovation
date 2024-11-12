@@ -1,6 +1,5 @@
-import "../styles.css";
 import { useState } from "react";
-import { registerUser } from "../api/routes/auth/register";
+import { registerUser } from "../../domain/api/routes/auth/register";
 
 function Register() {
   const [firstName, setFirstName] = useState("");

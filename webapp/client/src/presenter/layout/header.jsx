@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import PilotLogout from "./pilotLogout";
-import BurgerMenu from "./burgerMenu";
+import BurgerMenu from "../features/core/burgerMenu";
+import PilotLogout from "../features/core/pilotLogout";
+
 
 function Header() {
   const [isPilotVisible, setPilotVisible] = useState(false);

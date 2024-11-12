@@ -1,15 +1,14 @@
-import "../styles.css";
-import Header from "../components/Header";
-import NavMenu from "../components/NavMenu";
 import { PieChart } from "@mui/x-charts/PieChart";
 import { useState } from "react";
-import generateEmbeddedGoogleMapsLink from "../../../server/middleware/googleAPI";
+import generateEmbeddedGoogleMapsLink from "../../../../server/middleware/googleAPI";
 import useFetchDroneData from "../hooks/useDroneData";
+import Header from "../layout/Header";
+import NavMenu from "../layout/navMenu";
 
 const Stats = () => {
   const [droneID, setDroneID] = useState("");
 
-  const { droneData, expeditionData} = useFetchDroneData(droneID);
+  const { droneData, expeditionData } = useFetchDroneData(droneID);
 
   const mapUrl =
     expeditionData.length > 0 && expeditionData[0].location

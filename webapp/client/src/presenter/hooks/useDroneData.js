@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"; 
-import fetchDroneData from "../api/routes/components/stats";
+import fetchDroneData from "../../domain/api/routes/components/stats";
 
 const useFetchDroneData = (droneID) => {
   const [droneData, setDroneData] = useState({});

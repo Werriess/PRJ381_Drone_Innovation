@@ -1,8 +1,7 @@
 import React, {useState, useEffect} from "react";
-import "../styles.css";
-import Header from "../components/Header";
-import MainContent from "../components/maincomponent";
-import LoadingScreen from "../components/loadingScreen";
+import LoadingScreen from "../features/loadingScreen";
+import Header from "../layout/Header";
+import MainContent from "../features/infoBlock";
 
 
 function Info() {

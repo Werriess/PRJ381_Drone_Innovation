@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import "../styles.css";
-import Header from "../components/Header";
-import NavMenu from "../components/NavMenu";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
+import Header from "../layout/Header";
+import NavMenu from "../layout/navMenu";
 
 function Settings() {
   const navigate = useNavigate();
