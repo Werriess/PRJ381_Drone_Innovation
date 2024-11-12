@@ -15,6 +15,9 @@ function MainContent() {
               The Gas Scout can sense the following gasses:
               <ul>
                 <li>Carbon Monoxide (CO)</li>
+                <li>Methane (CH4)</li>
+                <li>Butane (C4H10)</li>
+                <li>Liquefied Petroleum Gas - Propane (C3H8)</li>
               </ul>
             </p>
             <p>
