@@ -1,5 +1,6 @@
+import "../styles.css";
 import { useState } from "react";
-import { registerUser } from "../../domain/api/routes/auth/register";
+import { registerUser } from "../api/routes/auth/register";
 
 function Register() {
   const [firstName, setFirstName] = useState("");
@@ -47,7 +48,11 @@ function Register() {
   return (
     <div id="register">
       <div id="pilotHat">
-        <img src="./assets/AirPilotHat.svg" alt="Air Pilot Hat" />
+<<<<<<< Updated upstream:webapp/src/pages/register.jsx
+        <img src="src/assets/AirPilotHat.svg" alt="Air Pilot Hat" />
+=======
+        <img src="/images/airPilotHat.svg" alt="Air Pilot Hat" />
+>>>>>>> Stashed changes:webapp/client/src/presenter/pages/register.jsx
       </div>
       <div id="registerContainer">
         <form onSubmit={handleSubmit} id="leftSide">
