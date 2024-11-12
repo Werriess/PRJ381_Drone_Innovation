@@ -3,7 +3,6 @@ import Header from "../layout/Header";
 import LoadingScreen from "../features/core/loadingScreen.jsx";
 import MainContent from "../features/core/infoBlock.jsx";
 
-
 function Info() {
     const [isLoading, setIsLoading] = useState(true);
     useEffect(() => {
