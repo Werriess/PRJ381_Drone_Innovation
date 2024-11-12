@@ -1,8 +1,7 @@
 import React, {useState, useEffect} from "react";
-import LoadingScreen from "../features/loadingScreen";
 import Header from "../layout/Header";
-import MainContent from "../features/infoBlock";
-
+import LoadingScreen from "../features/core/loadingScreen.jsx";
+import MainContent from "../features/core/infoBlock.jsx";
 
 function Info() {
     const [isLoading, setIsLoading] = useState(true);

@@ -265,10 +265,8 @@ nav.hide {
   width: 100%;;
   font-size: medium;
   height: 2rem;
-  background-color: var(--redItems);
-  color: white;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
-  padding: 0.5rem;
+  color: var(--redItems);
+  gap: 8rem;
 }
 
 .generalStatsInfo {
