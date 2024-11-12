@@ -51,7 +51,6 @@ function Settings() {
           setError(data.message);
         }
       } catch (error) {
-        console.error("Error", error);
         setError("An error occurred when fetching your data.");
       }
     };

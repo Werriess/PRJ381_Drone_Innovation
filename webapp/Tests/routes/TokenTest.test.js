@@ -22,6 +22,7 @@ describe('isAuthenticated middleware', () => {
     isAuthenticated(req, res, next);
 
     expect(jwt.verify).toHaveBeenCalledWith('validToken', process.env.JWT_SECRET, expect.any(Function));
+
     expect(req.user).toEqual({ user: 'validUser' });
     expect(next).toHaveBeenCalled();
     expect(res.sendStatus).not.toHaveBeenCalled();
@@ -43,7 +44,9 @@ describe('isAuthenticated middleware', () => {
 
     isAuthenticated(req, res, next);
 
+
     expect(jwt.verify).toHaveBeenCalledWith('invalidToken', process.env.JWT_SECRET, expect.any(Function));
+
     expect(res.sendStatus).toHaveBeenCalledWith(403);
     expect(next).not.toHaveBeenCalled();
   });
