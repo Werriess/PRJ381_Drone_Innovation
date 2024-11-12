@@ -1,8 +1,7 @@
-import "../styles.css";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 
-const pilotLogout = ({ isVisible, username }) => {
+const PilotLogout = ({ isVisible, username }) => {
   const navigate = useNavigate();
   const handleLogout = () => {
     Cookies.remove("accessToken");
@@ -24,4 +23,4 @@ const pilotLogout = ({ isVisible, username }) => {
   );
 };
 
-export default pilotLogout;
+export default PilotLogout;

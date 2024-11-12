@@ -2,12 +2,12 @@ import React from "react";
 import { createBrowserRouter } from "react-router-dom";
 import Cookies from "js-cookie";
 import ProtectedRoute from "./protectedRoute";
-import Login from "../pages/login";
-import Info from "../pages/info";
-import Settings from "../pages/settings";
-import Stats from "../pages/stats";
-import Specs from "../pages/specs";
-import Register from "../pages/register";
+import Login from "../presenter/pages/login";
+import Info from "../presenter/pages/info";
+import Settings from "../presenter/pages/settings";
+import Stats from "../presenter/pages/stats";
+import Specs from "../presenter/pages/specs";
+import Register from "../presenter/pages/register";
 
 const getAccessToken = () => {
   return Cookies.get("accessToken");

@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useRef, Suspense, act } from "react";
-import "../styles.css";
-import Header from "../components/Header";
-import NavMenu from "../components/NavMenu";
-import LoadingScreen from "../components/loadingScreen";
+import Header from "../layout/Header";
+import NavMenu from "../layout/navMenu";
+import LoadingScreen from "../features/loadingScreen";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
 import { Canvas, events, useFrame } from "@react-three/fiber";
 import { useLoader, useThree } from "@react-three/fiber";
 import { GridHelper, Color, Raycaster, Vector2, AmbientLight, DirectionalLight, PointLight, SpotLight, AnimationMixer } from "three";
 import { OrbitControls } from "@react-three/drei"
+
 
 const Model = () => {
   const gltf = useLoader(GLTFLoader, "/assets/DRONE.gltf", (loader) => {
