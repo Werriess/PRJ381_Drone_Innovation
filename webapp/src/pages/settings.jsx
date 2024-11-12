@@ -17,8 +17,6 @@ function Settings() {
   const [emailAddress, setEmailAddress] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const [updatStatus, setUpdatStatus] = useState("");
   const [isEditFormVisible, setIsEditFormVisible] = useState(false);
   const [isUpdateButtonVisible, setIsUpdateButtonVisible] = useState(false);
   const [isPassButtonVisible, setIsPassButtonVisible] = useState(false);
@@ -29,7 +27,7 @@ function Settings() {
       try {
         const token = Cookies.get("accessToken");
         if(!token){
-          setError("No Authentication token found.");
+          alert("No Authentication token found.");
           return;
         }
 
@@ -48,10 +46,10 @@ function Settings() {
           setEmailAddress(data.emailAddress);
           setUsername(data.username);
         } else {
-          setError(data.message);
+          alert(data.message);
         }
       } catch (error) {
-        setError("An error occurred when fetching your data.");
+        alert("An error occurred when fetching your data.");
       }
     };
     fetchUserData();
@@ -76,6 +74,7 @@ function Settings() {
     event.preventDefault();
 
     try {
+      if((firstName!="") && (lastName!="") && (emailAddress!="") && (username!="")){
       const token = Cookies.get("accessToken");
       const updateData = {
         firstName,
@@ -84,9 +83,6 @@ function Settings() {
         username,
       };
 
-      if (password.trim()) {
-        updateData.password = password;
-      }
 
       const response = await fetch("/api/settings/updateUser", {
         method: "PUT",
@@ -104,19 +100,25 @@ function Settings() {
         setEmailAddress(data.emailAddress);
         setUsername(data.username);
         setPassword(""); 
-        setError("");
+
+        alert("User updated successfully! Logging you out.");
+        handleLogout();
       } else {
-        setError("Failed to update user." + data.message);
+        alert("Failed to update user.");
       }
+    }else{
+      alert("Please fill in all fields");
+    }
     } catch (error) {
       console.error(error);
-      setError("An error occurred. Please try again.");
+      alert("An error occurred. Please try again.");
     }
   };
 
   const handlePasswordUpdate = async (event) => {
     event.preventDefault();
     try {
+      if(password != ""){
       const token = Cookies.get("accessToken");
       const response = await fetch("/api/settings/updateUserPassword", {
         method: "PUT",
@@ -129,14 +131,17 @@ function Settings() {
 
       if (response.ok) {
         setPassword(""); 
-        setUpdatStatus("Password Updated Successfully");
-        setError("");
+        alert("Password Updated Successfully");
       } else {
-        setError("Failed to update password.");
+        alert("Failed to update password.");
       }
+    }
+    else{
+      alert("Password cannot be empty!");
+    }
     } catch (error) {
       console.error(error);
-      setError("An error occurred. Please try again.");
+      alert("An error occurred. Please try again.");
     }
   };
 
@@ -208,6 +213,7 @@ function Settings() {
                     required
                   />
                   <button
+                  type="button"
                     id="changePass"
                     onClick={() => {
                       toggleButtonPass();
@@ -248,10 +254,6 @@ function Settings() {
                   Update Password
                 </button>
               </form>
-              <div>
-                <div className="updateFeedback">{updatStatus}</div>
-                <div className="updateFeedback">{error}</div>
-              </div>
             </div>
             <div id="updateButton">
               <button

@@ -107,8 +107,15 @@ header img {
 
 #overlay {
   max-width: 100%;
+<<<<<<< Updated upstream:webapp/src/styles.css
   background-image: url("../src/assets/infoBackground.png");
   background-size: contain;
+=======
+  background-image: url("/images/infoBackground.png");
+  background-size:cover;
+  background-repeat: no-repeat;
+  background-position: center;
+>>>>>>> Stashed changes:webapp/client/src/styles.css
 }
 
 #models {
@@ -124,16 +131,43 @@ header img {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 80%;
+  max-width: 70dvw;
   height: 100%;
   color: whitesmoke;
-  padding: 1rem;
+  padding: 3rem;
 }
 
 #content h1 {
   font-family: "KeaniaOne", sans-serif;
   font-size: 82px;
   font-weight: normal;
+}
+
+#gasList{
+  text-align: left;
+}
+
+#teamList {
+  text-align: left;
+}
+#team{
+  display: flex;
+  flex-direction:row ;
+  margin-left: -8%;
+}
+
+#team li{
+  margin-left: 5%;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+#team li img{
+  width: 150px;
+  height: 150px;
+  border-radius: 100%;
+  box-shadow: rgba(106, 0, 0, 0.771) 0px 20px 30px -10px;
 }
 
 #navMenu {
@@ -549,8 +583,8 @@ table tbody tr {
 
 #top{
   display: flex;
-  height: 500px;
-  margin-bottom: 50px;
+  height: 300px;
+  width: 90%;
 }
 
 #top div{
@@ -562,9 +596,10 @@ table tbody tr {
   padding: 30px;
 }
 
+
 #updateContainer{
   padding: 30px;
-  width: 70%;
+  width: 80%;
   height: 80%;
   margin-top: 30px;
   box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
@@ -594,6 +629,7 @@ table tbody tr {
   width: 80%;
   margin-left: 30px;
 }
+
 
 #change{
   display: block;
