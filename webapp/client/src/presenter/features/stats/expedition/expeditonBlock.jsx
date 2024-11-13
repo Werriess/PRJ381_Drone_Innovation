@@ -1,6 +1,10 @@
+import ExpeditionForm from "./components/expeditionForm";
+
 const ExpeditionBlock = () => {
     return (
-        <div>Expedition CRUD</div>
+        <div>
+            <ExpeditionForm/>
+        </div>
     )
 }
 
