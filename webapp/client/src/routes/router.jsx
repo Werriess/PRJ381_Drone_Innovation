@@ -36,7 +36,7 @@ const Router = createBrowserRouter([
         element: <Info />,
       },
       {
-        path: "/stats",
+        path: "/stats/*",
         element: <Stats />,
       },
       {
