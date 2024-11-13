@@ -919,7 +919,7 @@ table tbody tr {
   display: flex;
   flex-direction: column;
   background-color: hsl(var(--greyBackground));
-  width: 10rem;
+  min-width: 10rem;
 }
 
 .statsMenuContent {
