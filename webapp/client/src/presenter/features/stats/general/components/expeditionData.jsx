@@ -51,14 +51,6 @@ const ExpeditionData = ({ expeditionData }) => {
               <table>
                 <tbody>
                   <tr>
-                    <td>Start time:</td>
-                    <td>{expedition.startTime || "N/A"}</td>
-                  </tr>
-                  <tr>
-                    <td>End time:</td>
-                    <td>{expedition.endTime || "N/A"}</td>
-                  </tr>
-                  <tr>
                     <td>Latitude:</td>
                     <td>{expedition.location?.latitude || "N/A"}</td>
                   </tr>
@@ -67,16 +59,20 @@ const ExpeditionData = ({ expeditionData }) => {
                     <td>{expedition.location?.longitude || "N/A"}</td>
                   </tr>
                   <tr>
-                    <td>Average gas concentration:</td>
-                    <td>{expedition.gasStats?.avgValue || "N/A"}</td>
+                    <td>Carbon Monoxide:</td>
+                    <td>{Math.round(expedition.gasStats?.carbonMonoxide) + " ppm" || "N/A"}</td>
                   </tr>
                   <tr>
-                    <td>Highest concentration:</td>
-                    <td>{expedition.gasStats?.highestValue || "N/A"}</td>
+                    <td>Methane:</td>
+                    <td>{Math.round(expedition.gasStats?.methane) + " ppm"  || "N/A"}</td>
                   </tr>
                   <tr>
-                    <td>Lowest concentration:</td>
-                    <td>{expedition.gasStats?.lowestValue || "N/A"}</td>
+                    <td>Butane:</td>
+                    <td>{Math.round(expedition.gasStats?.butane) + " ppm"  || "N/A"}</td>
+                  </tr>
+                  <tr>
+                    <td>Liquefied Petroleum Gas:</td>
+                    <td>{Math.round(expedition.gasStats?.liquefiedPetroleumGas) + " ppm"  || "N/A"}</td>
                   </tr>
                 </tbody>
               </table>
