@@ -264,25 +264,6 @@ nav.hide {
   gap: 5rem;
 }
 
-.liveDataContainer {
-  flex: 1;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.liveDataContainer h1 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: medium;
-  background-color: var(--redItems);
-  color: white;
-  font-size: medium;
-  height: 3rem;
-  width: 100%;
-  margin-top: 0;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
-}
-
 .googleMapsContainer {
   flex: 1;
 }
@@ -390,6 +371,13 @@ table tbody tr {
   margin-right: 2rem;
   max-height: 80%;
   color: var(--redItems);
+}
+
+#statsContentRight {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 #specs {
