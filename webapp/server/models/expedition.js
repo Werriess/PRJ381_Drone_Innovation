@@ -13,9 +13,10 @@ const expeditionSchema = new mongoose.Schema({
     longitude: { type: Number, required: true },
   },
   gasStats: {
-    avgValue: { type: Number, required: true },
-    highestValue: { type: Number, required: true },
-    lowestValue: { type: Number, required: true },
+    carbonMonoxide: { type: Number, required: true },
+    methane: { type: Number, required: true },
+    butane: { type: Number, required: true },
+    liquefiedPetroleumGas: {type: Number, required: true}
   },
 });
 

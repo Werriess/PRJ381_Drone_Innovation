@@ -99,9 +99,10 @@ async function generateExpeditions(num, droneIds) {
         longitude: faker.location.longitude(),
       },
       gasStats: {
-        avgValue: faker.number.float({ min: 70, max: 990 }),
-        highestValue: faker.number.float({ min: 70, max: 990 }),
-        lowestValue: faker.number.float({ min: 70, max: 990 }),
+        carbonMonoxide: faker.number.float({ min: 70, max: 990 }),
+        methane: faker.number.float({ min: 70, max: 990 }),
+        butane: faker.number.float({ min: 70, max: 990 }),
+        liquefiedPetroleumGas: faker.number.float({ min: 70, max: 990 }),
       },
     });
   }
