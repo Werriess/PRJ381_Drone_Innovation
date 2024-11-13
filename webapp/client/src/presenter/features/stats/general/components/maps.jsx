@@ -1,5 +1,3 @@
-import React from "react";
-
 const GoogleMap = ({ mapUrl }) => (
   <section className="googleMapsContainer">
     <iframe

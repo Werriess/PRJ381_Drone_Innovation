@@ -294,7 +294,7 @@ nav.hide {
   width: 100%;;
   font-size: medium;
   height: 2rem;
-  padding: 0.5rem;
+
 }
 
 .generalStatsInfo {
@@ -303,15 +303,13 @@ nav.hide {
   justify-content: space-between;
 }
 
-.generalStatsInfo h1{
-  color: var(--redItems);
-}
-.expiditionInfoBlock {
+.expeditionInfoBlock {
+  min-height: 300px; 
+  min-width: 500px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  width: 100%;
+  justify-content: center; 
+  align-items: center;
 }
 
 .expiditionInfoBlock h1 {
@@ -325,12 +323,17 @@ nav.hide {
 }
 
 .expeditionCard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: 1px solid rgb(148, 148, 148);
   border-radius: 0.5rem;
   margin: 1rem;
   padding: 1rem;
   background-color: rgb(249, 249, 249); 
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+  min-height: 10rem;
+  min-width: 20rem;
 }
 
 table tbody tr {
@@ -366,16 +369,27 @@ table tbody tr {
 
 #statsContent {
   display: flex;
+  gap: 3rem;
   width: 100%;
-  border-top: solid 5px var(--redItems);
   background-color: rgba(200, 200, 200, 100);
+  height: 100%;
 }
 
-#statsContentRight {
-  display: flex;
+#statsInnerLeft {
+  margin-top: 2rem;
+  padding: 3rem;
   background-color: white;
-  padding: 1rem;
-  max-height: 40rem;
+  max-height: 80%;
+  color: var(--redItems);
+}
+
+#statsInnerRight {
+  margin-top: 2rem;
+  padding: 3rem;
+  background-color: white;
+  margin-right: 2rem;
+  max-height: 80%;
+  color: var(--redItems);
 }
 
 #specs {
@@ -905,9 +919,7 @@ table tbody tr {
   display: flex;
   flex-direction: column;
   background-color: hsl(var(--greyBackground));
-  height: 100vh;
   width: 10rem;
-  padding-top: 2rem;
 }
 
 .statsMenuContent {
@@ -997,6 +1009,14 @@ table tbody tr {
   #generalStatsContainer {
     flex-direction: column;
     margin-left: 2rem;
+  }
+
+  #statsContent {
+    flex-direction: column;
+  }
+
+  #statsMenuBlock {
+    display: none;
   }
 }
 
