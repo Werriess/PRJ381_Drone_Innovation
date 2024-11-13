@@ -12,14 +12,16 @@
   text-align: center;
 }
 
-body {
-  padding: 0;
+html, body {
   margin: 0;
+  padding: 0;
+  overflow-y: scroll;
 }
+
 
 @font-face {
   font-family: "KeaniaOne";
-  src: url("../src/fonts/KeaniaOne-Regular.ttf") format("truetype");
+  src: url("../src/presenter/fonts/KeaniaOne-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -101,6 +103,8 @@ header img {
 
 #main {
   display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: rgba(0, 0, 0, 0.649);
   min-height: 90vh;
 }
@@ -117,8 +121,6 @@ header img {
   display: flex;
   flex: 1;
   justify-content: flex-start; 
-  margin-top: 2rem;
-  margin-right: 2rem;
 }
 
 #content {
@@ -145,20 +147,20 @@ header img {
 #teamList {
   text-align: left;
 }
-#team{
+.team{
   display: flex;
   flex-direction:row ;
   margin-left: -8%;
 }
 
-#team li{
+.team li{
   margin-left: 5%;
   list-style: none;
   display: flex;
   flex-direction: column;
 }
 
-#team li img{
+.team li img{
   width: 150px;
   height: 150px;
   border-radius: 100%;
@@ -337,8 +339,9 @@ table tbody tr {
 #mainSpecs {
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 100%;
+  gap: 10rem;
+  height: 100vh;
+  background-color: rgba(200, 200, 200, 100);
 }
 
 #mainSpecs #models{
@@ -347,6 +350,18 @@ table tbody tr {
   height: 100%;
   justify-content: center;
 }
+
+#infoBox {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 10; 
+}
+
 
 #statsContent {
   display: flex;
@@ -414,12 +429,12 @@ table tbody tr {
 }
 
 #box {
-  flex: 1; 
   max-width: 90%; 
+  max-height: 100vh;
 }
 
 #canvas{
-  height: 600px !important;
+  height: 500px !important;
   background-color: #333333;
 }
 
@@ -579,7 +594,7 @@ table tbody tr {
   display: flex;
   flex-direction: row;
   width: 100%;
-  height: 90vh;
+  height: 100vh;
 }
 
 #top{

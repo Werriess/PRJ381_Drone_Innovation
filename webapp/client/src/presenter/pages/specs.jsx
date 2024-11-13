@@ -5,9 +5,9 @@ import { Canvas, events, useFrame } from "@react-three/fiber";
 import { useLoader, useThree } from "@react-three/fiber";
 import { GridHelper, Color, Raycaster, Vector2, AmbientLight, DirectionalLight, PointLight, SpotLight, AnimationMixer } from "three";
 import { OrbitControls } from "@react-three/drei"
-import NavMenu from "../layout/navMenu";
 import Header from "../layout/Header";
 import LoadingScreen from "../features/core/loadingScreen";
+import StatsNavMenu from "../layout/statsNavMenu";
 
 
 const Model = () => {
@@ -30,7 +30,7 @@ const Model = () => {
       
       modelRef.current.traverse((child) => {
         if(child.isMesh){
-          child.userData.name = child.name; //Store name for easy identification
+          child.userData.name = child.name; 
         }
       });
     }
@@ -196,11 +196,11 @@ const Specs = ({ children }) => {
         <>
           <Header />
           <section id="mainSpecs">
-              <NavMenu />
-              <section id="models">
+            <StatsNavMenu />
+            <section id="models">
               <div id="box">
-                <div id="root" >
-                  <Canvas id="canvas" >
+                <div id="root">
+                  <Canvas id="canvas">
                     <ambientLight intensity={1} />
                     <directionalLight
                       position={[0, 10, 0]}
@@ -221,24 +221,27 @@ const Specs = ({ children }) => {
                       intensity={2}
                       castShadow
                       shadow-mapSize-width={1024}
-                      shadow-mapSize-height={1024}
                       shadow-camera-near={10}
                       shadow-camera-far={50}
                     />
                     <Suspense fallback={null}>
                       <Model />
                       <OrbitControls />
-                      <gridHelper args={[100, 100, new Color(0x888888), new Color(0x888888)]}/>
+                      <gridHelper
+                        args={[100, 100, new Color(0x888888), new Color(0x888888)]}
+                      />
                       <ClickHandler setInfo={setInfo} />
                     </Suspense>
                   </Canvas>
+                  <div id="infoBox">
+                    {info && (
+                      <table>
+                        <tbody>{info}</tbody>
+                      </table>
+                    )}
+                  </div>
                 </div>
                 {children}
-              </div>
-              <div id="specs">
-                <div id="specsBlock">
-                  {info && <table><tbody>{info}</tbody></table>}
-                </div>
               </div>
             </section>
           </section>
@@ -249,4 +252,5 @@ const Specs = ({ children }) => {
 };
 
 export default Specs;
+
 

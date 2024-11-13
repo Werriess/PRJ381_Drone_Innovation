@@ -3,6 +3,7 @@ import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import Header from "../layout/Header";
 import NavMenu from "../layout/navMenu";
+import StatsNavMenu from "../layout/statsNavMenu";
 
 function Settings() {
   const navigate = useNavigate();
@@ -148,7 +149,7 @@ function Settings() {
     <div>
       <Header />
       <section id="settings">
-        <NavMenu />
+        <StatsNavMenu/>
         <div id="updateContainer">
           <div className="updateForm">
             <div id="top">
