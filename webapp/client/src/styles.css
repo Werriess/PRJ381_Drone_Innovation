@@ -942,6 +942,28 @@ table tbody tr {
   font-size: small;
 }
 
+#expiForm {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.expiFormContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.expiFormContent input {
+  width: 20rem;
+  padding: 0.5rem;
+}
+
+#expiButtons {
+  display: flex;
+  gap: 2rem;
+}
+
 @media (max-width: 600px) {
   .formRow {
     flex-direction: column;
