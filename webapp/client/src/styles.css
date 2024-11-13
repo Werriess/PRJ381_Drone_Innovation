@@ -294,9 +294,6 @@ nav.hide {
   width: 100%;;
   font-size: medium;
   height: 2rem;
-  background-color: var(--redItems);
-  color: white;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
   padding: 0.5rem;
 }
 
@@ -370,8 +367,15 @@ table tbody tr {
 #statsContent {
   display: flex;
   width: 100%;
-  justify-content: center;
-  align-items: center;
+  border-top: solid 5px var(--redItems);
+  background-color: rgba(200, 200, 200, 100);
+}
+
+#statsContentRight {
+  display: flex;
+  background-color: white;
+  padding: 1rem;
+  max-height: 40rem;
 }
 
 #specs {
@@ -895,6 +899,32 @@ table tbody tr {
 .droneLoad {
   width: 100px;
   animation: fly 2s infinite linear;
+}
+
+#statsMenuBlock {
+  display: flex;
+  flex-direction: column;
+  background-color: hsl(var(--greyBackground));
+  height: 100vh;
+  width: 10rem;
+  padding-top: 2rem;
+}
+
+.statsMenuContent {
+  margin-bottom: 5rem;
+  color: white;
+}
+.statsLink {
+  text-decoration: none;
+  color: white;
+}
+
+.statsLink :hover {
+  text-decoration: underline;
+}
+
+.statsLink p {
+  font-size: small;
 }
 
 @media (max-width: 600px) {

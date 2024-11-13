@@ -8,6 +8,7 @@ import NavMenu from "../layout/navMenu";
 import Header from "../layout/Header";
 import DroneInfo from "../features/stats/droneInfo";
 import PieChartSection from "../features/stats/pieChartBlock";
+import StatsNavMenu from "../layout/statsNavMenu";
 
 const Stats = () => {
   const [droneID, setDroneID] = useState("");
@@ -24,11 +25,10 @@ const Stats = () => {
   return (
     <div id="stats">
       <Header />
-      <section id="statsBlockAll"></section>
       <section id="statsContent">
-        <NavMenu />
-        <section id="generalStatsContainer">
-          <div id="statsLeft">
+        <StatsNavMenu />
+        <div id="statsContentRight">
+          <div id="statsInnerLeft">
             <DroneInfo
               droneID={droneID}
               setDroneID={setDroneID}
@@ -37,11 +37,10 @@ const Stats = () => {
             <ExpeditionData expeditionData={expeditionData} />
             <PieChartSection />
           </div>
-          <div id="statsRight">
-            <LiveData />
-            <GoogleMap mapUrl={mapUrl} />
+          <div id="statsInnerRight">
+          
           </div>
-        </section>
+        </div>
       </section>
     </div>
   );
