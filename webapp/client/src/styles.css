@@ -365,10 +365,17 @@ table tbody tr {
 
 #statsContent {
   display: flex;
-  gap: 3rem;
   width: 100%;
   background-color: rgba(200, 200, 200, 100);
   height: 100%;
+  gap: 2rem;
+}
+
+#statsContentRight {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 #statsInnerLeft {
@@ -390,12 +397,13 @@ table tbody tr {
 
 #droneBlock{
   background-color: #bb271a;
-  width: 100%;
-  padding: 30px;
+  width: 50%;
+  padding: 3rem;
   border-radius: 24px;
   margin-top: 30px;
   box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
   color: whitesmoke;
+  max-height: 80vh;
 }
 
 #droneForm{
@@ -472,6 +480,11 @@ table tbody tr {
   margin: 0 0 8px;
   display: flex;
   flex-direction: column;
+}
+
+#droneList {
+  max-height: 15rem;
+  overflow-y: scroll;
 }
 
 
