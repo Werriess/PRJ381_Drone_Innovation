@@ -1,19 +1,24 @@
 import { Box, Card } from "@mui/material";
-import LiveDataCard from "./components/liveDataCard";
 import { useEffect, useState } from "react";
-import { io } from "socket.io-client";
+import { fetchSensorData } from "../../../../domain/api/routes/components/expedition";
+import LiveDataCard from "./components/liveDataCard";
 
 const LiveData = () => {
   const [sensorData, setSensorData] = useState("Waiting for data...");
 
   useEffect(() => {
-    const socket = io("http://localhost:8000");
+    const getData = async () => {
+      try {
+        const data = await fetchSensorData();
+        setSensorData(data.analogValue || "No data available");
+      } catch (error) {
+        console.error("Error fetching sensor data:", error);
+      }
+    };
 
-    socket.on("sensorData", (data) => {
-      setSensorData(data); 
-    });
-
-    return () => socket.disconnect(); 
+    getData();
+    const intervalId = setInterval(getData, 5000);
+    return () => clearInterval(intervalId);
   }, []);
 
   return (
