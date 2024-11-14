@@ -3,14 +3,14 @@ export async function fetchSensorData() {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-      },
+      }
     });
-  
+   
     if (!response.ok) {
       throw new Error("Failed to fetch sensor data");
     }
-  
+   
     const data = await response.json();
     return data;
   }
-  
+   
