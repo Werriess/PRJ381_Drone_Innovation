@@ -16,7 +16,11 @@ export default defineConfig({
       '/api/stats/drones': 'http://webapp:8000',
       '/api/settings/updateUser': 'http://webapp:8000',
       '/api/settings/updateUserPassword': 'http://webapp:8000',
-      '/api/settings/getUser': 'http://webapp:8000'
+      '/api/settings/getUser': 'http://webapp:8000',
+      '/socket.io': {
+        target: 'http://webapp:8000', 
+        ws: true,
+      }
     },
   },
 })
