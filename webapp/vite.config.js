@@ -17,10 +17,11 @@ export default defineConfig({
       '/api/settings/updateUser': 'http://webapp:8000',
       '/api/settings/updateUserPassword': 'http://webapp:8000',
       '/api/settings/getUser': 'http://webapp:8000',
-      '/socket.io': {
-        target: 'http://webapp:8000', 
-        ws: true,
-      }
+      // '/socket.io': {
+      //   target: 'http://webapp:8000', 
+      //   ws: true,
+      // }
+      '/api/data': 'http://webapp:8000'
     },
   },
 })
