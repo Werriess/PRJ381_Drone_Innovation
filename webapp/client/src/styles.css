@@ -388,12 +388,92 @@ table tbody tr {
   color: var(--redItems);
 }
 
-#statsContentRight {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+#droneBlock{
+  background-color: #bb271a;
   width: 100%;
+  padding: 30px;
+  border-radius: 24px;
+  margin-top: 30px;
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+  color: whitesmoke;
 }
+
+#droneForm{
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  color: whitesmoke;
+}
+
+#droneForm div{
+  margin-bottom: 20px;
+}
+
+#droneForm div label{
+  margin-right: 20px;
+}
+
+#droneNumSelect{
+  width: 60%;
+  height: 35px;
+  margin-bottom: 15px;
+  border-radius: 24px;
+  padding: 5px;
+  border: 1px solid rgb(135, 135, 135);
+}
+
+#droneForm input{
+  width: 60%;
+  height: 25px;
+  margin-bottom: 15px;
+  border-radius: 24px;
+  padding: 5px;
+  border: 1px solid rgb(135, 135, 135);
+}
+
+#buttonsDrone{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#buttonsDrone button{
+  width: 150px;
+  height: 40px;
+  border-radius: 24px;
+  border: none;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+#buttonsDrone button:hover{
+  background-color: #333333;
+  color: whitesmoke;
+}
+
+.grid-container {
+ display: flex;
+ flex-direction: column;
+}
+
+.grid-item {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #ddd;
+  padding: 16px;
+  border-radius: 8px;
+  background-color: #1a1a1a;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  justify-content: space-between;
+}
+
+.grid-item p {
+  margin: 0 0 8px;
+  display: flex;
+  flex-direction: column;
+}
+
 
 #specs {
   flex: 1;
