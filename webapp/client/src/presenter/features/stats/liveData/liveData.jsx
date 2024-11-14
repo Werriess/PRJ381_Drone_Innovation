@@ -28,7 +28,7 @@ const LiveData = () => {
  
   return (
     <Box sx={{ minWidth: 250 }}>
-      <Card variant="outlined" sx={{ p: 20, mr: 5 }}>
+      <Card variant="outlined" sx={{ p: 20 }}>
         <LiveDataCard
           title="Live Data:"
           description={`Gas Sensor Value: ${sensorData} ${finalData}`}

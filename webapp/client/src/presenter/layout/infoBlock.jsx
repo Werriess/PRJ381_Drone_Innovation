@@ -1,6 +1,6 @@
 import React from "react";
-import UseButton, { CustomButton } from "../../layout/button";
 import { useNavigate } from "react-router-dom";
+import { CustomButton } from "./button";
 
 function MainContent() {
 

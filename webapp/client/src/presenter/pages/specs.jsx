@@ -3,13 +3,22 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
 import { Canvas, events, useFrame } from "@react-three/fiber";
 import { useLoader, useThree } from "@react-three/fiber";
-import { GridHelper, Color, Raycaster, Vector2, AmbientLight, DirectionalLight, PointLight, SpotLight, AnimationMixer } from "three";
-import { OrbitControls } from "@react-three/drei"
+import {
+  GridHelper,
+  Color,
+  Raycaster,
+  Vector2,
+  AmbientLight,
+  DirectionalLight,
+  PointLight,
+  SpotLight,
+  AnimationMixer,
+} from "three";
+import { OrbitControls } from "@react-three/drei";
 
-import LoadingScreen from "../features/core/loadingScreen";
+import LoadingScreen from "../layout/loadingScreen";
 import StatsNavMenu from "../layout/statsNavMenu";
 import Header from "../layout/header";
-
 
 const Model = () => {
   const gltf = useLoader(GLTFLoader, "/assets/DRONE.gltf", (loader) => {
@@ -22,16 +31,16 @@ const Model = () => {
   const mixerRef = useRef();
 
   useEffect(() => {
-    if(modelRef.current) {
+    if (modelRef.current) {
       mixerRef.current = new AnimationMixer(modelRef.current);
       gltf.animations.forEach((clip) => {
         const action = mixerRef.current.clipAction(clip);
         action.play();
       });
-      
+
       modelRef.current.traverse((child) => {
-        if(child.isMesh){
-          child.userData.name = child.name; 
+        if (child.isMesh) {
+          child.userData.name = child.name;
         }
       });
     }
@@ -42,7 +51,9 @@ const Model = () => {
 
   useFrame((state, delta) => mixerRef.current?.update(delta));
 
-  return <primitive object={gltf.scene} scale={1} position-y={2} ref={modelRef} />;
+  return (
+    <primitive object={gltf.scene} scale={1} position-y={2} ref={modelRef} />
+  );
 };
 
 const ClickHandler = ({ setInfo }) => {
@@ -51,8 +62,8 @@ const ClickHandler = ({ setInfo }) => {
   const mouse = new Vector2();
 
   const onClick = (event) => {
-    mouse.x = (event.clientX / window.innerWidth) * 2 -1;
-    mouse.y = -(event.clientY / window.innerHeight)* 2 + 1;
+    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+    mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
     raycaster.setFromCamera(mouse, camera);
     const intersects = raycaster.intersectObjects(scene.children, true);
     if (intersects.length > 0) {
@@ -136,7 +147,7 @@ const ClickHandler = ({ setInfo }) => {
           </tr>
         </>
       );
-      
+
       if (object.userData.name === "Base" || object.userData.name === "White") {
         setInfo(set1);
       } else if (
@@ -155,7 +166,7 @@ const ClickHandler = ({ setInfo }) => {
         object.userData.name === "propeller004" ||
         object.userData.name === "propeller005" ||
         object.userData.name === "propeller006" ||
-        object.userData.name === "propeller007" 
+        object.userData.name === "propeller007"
       ) {
         setInfo(set2);
       } else if (
@@ -166,7 +177,9 @@ const ClickHandler = ({ setInfo }) => {
       ) {
         setInfo(set3);
       } else {
-        setInfo("Nothing Clicked yet.\n Options: \n -Drone Base \n -Camera \n -Wings");
+        setInfo(
+          "Nothing Clicked yet.\n Options: \n -Drone Base \n -Camera \n -Wings"
+        );
       }
     }
   };
@@ -229,7 +242,12 @@ const Specs = ({ children }) => {
                       <Model />
                       <OrbitControls />
                       <gridHelper
-                        args={[100, 100, new Color(0x888888), new Color(0x888888)]}
+                        args={[
+                          100,
+                          100,
+                          new Color(0x888888),
+                          new Color(0x888888),
+                        ]}
                       />
                       <ClickHandler setInfo={setInfo} />
                     </Suspense>
@@ -253,5 +271,3 @@ const Specs = ({ children }) => {
 };
 
 export default Specs;
-
-
