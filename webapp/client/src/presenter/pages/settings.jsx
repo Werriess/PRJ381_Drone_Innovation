@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
-import Header from "../layout/Header";
-import NavMenu from "../layout/navMenu";
+import Header from "../layout/header";
 import StatsNavMenu from "../layout/statsNavMenu";
 
 function Settings() {
