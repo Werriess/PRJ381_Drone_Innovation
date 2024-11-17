@@ -384,15 +384,8 @@ table tbody tr {
   background-color: white;
   max-height: 80%;
   color: var(--redItems);
-}
-
-#statsInnerRight {
-  margin-top: 2rem;
-  padding: 3rem;
-  background-color: white;
   margin-right: 2rem;
-  max-height: 80%;
-  color: var(--redItems);
+  margin-bottom: 2rem;
 }
 
 #droneBlock{
@@ -1039,6 +1032,9 @@ table tbody tr {
   display: flex;
   gap: 2rem;
   margin-bottom: 2rem;
+  background-color: white;
+  padding: 3rem;
+  border-radius: 0.5rem;
 }
 
 .expiFormContent {
@@ -1050,6 +1046,11 @@ table tbody tr {
 .expiFormContent input {
   width: 20rem;
   padding: 0.5rem;
+  color: var(--redItems)
+}
+
+.expiFormContent textarea {
+  color: var(--redItems)
 }
 
 #expiButtons {

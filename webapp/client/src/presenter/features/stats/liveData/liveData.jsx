@@ -1,6 +1,6 @@
 import { Box, Card } from "@mui/material";
 import { useEffect, useState } from "react";
-import { fetchSensorData } from "../../../../domain/api/routes/components/expedition";
+import { fetchSensorData } from "../../../../domain/api/routes/components/liveData";
 import LiveDataCard from "./components/liveDataCard";
  
 const LiveData = () => {
