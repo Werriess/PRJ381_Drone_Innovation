@@ -1,20 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { CustomButton } from "../../../../layout/button";
-import { fetchUserExpeditions } from "../../../../../domain/api/routes/components/expeditions";
+import { fetchUserExpeditions, updateExpedition } from "../../../../../domain/api/routes/components/expeditions";
+
 
 const ExpeditionForm = () => {
-  const [expeditions, setExpeditions] = useState([]); // To store all expeditions
-  const [selectedExpedition, setSelectedExpedition] = useState(null); // To store the selected expedition
+  const [expeditions, setExpeditions] = useState([]);
+  const [selectedExpedition, setSelectedExpedition] = useState(null);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const data = await fetchUserExpeditions();
-        console.log(data); 
         setExpeditions(data);
-        setSelectedExpedition(data[0]); 
+        setSelectedExpedition(data[0]);
       } catch (error) {
         console.error("Error fetching expeditions:", error.message);
+        setErrorMessage("Failed to fetch expeditions.");
       }
     };
 
@@ -24,7 +27,7 @@ const ExpeditionForm = () => {
   const handleSelectChange = (event) => {
     const expeditionId = event.target.value;
     const expedition = expeditions.find((exp) => exp._id === expeditionId);
-    setSelectedExpedition(expedition); 
+    setSelectedExpedition(expedition);
   };
 
   const handleInputChange = (event) => {
@@ -33,6 +36,28 @@ const ExpeditionForm = () => {
       ...prev,
       [name]: value,
     }));
+  };
+
+  const handleGasInputChange = (gasName, value) => {
+    setSelectedExpedition((prev) => ({
+      ...prev,
+      gasStats: {
+        ...prev.gasStats,
+        [gasName]: value,
+      },
+    }));
+  };
+
+  const handleUpdate = async () => {
+    try {
+      setErrorMessage("");
+      setSuccessMessage("");
+      await updateExpedition(selectedExpedition._id, selectedExpedition);
+      setSuccessMessage("Expedition updated successfully!");
+    } catch (error) {
+      console.error("Error updating expedition:", error.message);
+      setErrorMessage("Failed to update expedition.");
+    }
   };
 
   if (!selectedExpedition) {
@@ -47,7 +72,7 @@ const ExpeditionForm = () => {
             name="Expedition"
             id="expeditionSelect"
             onChange={handleSelectChange}
-            value={selectedExpedition._id} 
+            value={selectedExpedition._id}
           >
             {expeditions.map((expedition) => (
               <option key={expedition._id} value={expedition._id}>
@@ -111,52 +136,33 @@ const ExpeditionForm = () => {
           <input
             type="text"
             placeholder="Enter carbon monoxide level"
-            name="gasStats.carbonMonoxide"
+            name="carbonMonoxide"
             value={selectedExpedition.gasStats?.carbonMonoxide || ""}
             onChange={(e) =>
-              setSelectedExpedition((prev) => ({
-                ...prev,
-                gasStats: { ...prev.gasStats, carbonMonoxide: e.target.value },
-              }))
+              handleGasInputChange("carbonMonoxide", e.target.value)
             }
           />
           <input
             type="text"
             placeholder="Enter methane"
-            name="gasStats.methane"
+            name="methane"
             value={selectedExpedition.gasStats?.methane || ""}
-            onChange={(e) =>
-              setSelectedExpedition((prev) => ({
-                ...prev,
-                gasStats: { ...prev.gasStats, methane: e.target.value },
-              }))
-            }
+            onChange={(e) => handleGasInputChange("methane", e.target.value)}
           />
           <input
             type="text"
             placeholder="Enter butane"
-            name="gasStats.butane"
+            name="butane"
             value={selectedExpedition.gasStats?.butane || ""}
-            onChange={(e) =>
-              setSelectedExpedition((prev) => ({
-                ...prev,
-                gasStats: { ...prev.gasStats, butane: e.target.value },
-              }))
-            }
+            onChange={(e) => handleGasInputChange("butane", e.target.value)}
           />
           <input
             type="text"
             placeholder="Enter liquefied petroleum gas"
-            name="gasStats.liquefiedPetroleumGas"
+            name="liquefiedPetroleumGas"
             value={selectedExpedition.gasStats?.liquefiedPetroleumGas || ""}
             onChange={(e) =>
-              setSelectedExpedition((prev) => ({
-                ...prev,
-                gasStats: {
-                  ...prev.gasStats,
-                  liquefiedPetroleumGas: e.target.value,
-                },
-              }))
+              handleGasInputChange("liquefiedPetroleumGas", e.target.value)
             }
           />
         </div>
@@ -168,12 +174,12 @@ const ExpeditionForm = () => {
             placeholder="Give us some feedback?"
           ></textarea>
           <div id="expiButtons">
-            <CustomButton>Add</CustomButton>
-            <CustomButton>Update</CustomButton>
-            <CustomButton>Delete</CustomButton>
+            <CustomButton onClick={handleUpdate}>Update</CustomButton>
           </div>
         </div>
       </form>
+      {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+      {successMessage && <p style={{ color: "green" }}>{successMessage}</p>}
     </div>
   );
 };
