@@ -27,3 +27,26 @@ export const getUserExpeditions = async (req, res) => {
     res.status(500).json({ message: "Internal server error" });
   }
 };
+
+export const updateExpedition = async (req, res) => {
+  const { expeditionID } = req.params;
+  const updateData = req.body; 
+
+  try {
+    const updatedExpedition = await Expedition.findByIdAndUpdate(
+      expeditionID,
+      updateData,
+      { new: true, runValidators: true } 
+    );
+
+    if (!updatedExpedition) {
+      return res.status(404).json({ message: "Expedition not found." });
+    }
+    res.status(200).json({ message: "Expedition updated successfully.", expedition: updatedExpedition });
+  } catch (error) {
+    console.error("Error updating expedition:", error);
+    res.status(500).json({ message: "Internal server error." });
+  }
+};
+
+
