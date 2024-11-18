@@ -1,7 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { registerUser } from "../../domain/api/routes/auth/register";
+import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 function Register() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (Cookies.get("accessToken")) {
+      navigate("/info");
+    }
+  }, [navigate]);
+
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [emailAddress, setEmailAddress] = useState("");
@@ -117,7 +127,7 @@ function Register() {
               Login
             </span>
           </p>
-        </form>
+        </form> 
       </div>
     </div>
   );
