@@ -16,7 +16,7 @@ const DroneBlock = () => {
   }, []);
 
   return (
-    <div id="droneBlock">
+    <div className="statsInnerLeft">
       <DroneForm
         drones={drones}
         onDroneAdded={loadDrones}

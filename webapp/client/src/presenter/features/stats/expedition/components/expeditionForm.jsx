@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { CustomButton } from "../../../../layout/button";
-import { fetchUserExpeditions, updateExpedition } from "../../../../../domain/api/routes/components/expeditions";
-
+import {
+  addExpedition,
+  fetchUserExpeditions,
+  updateExpedition,
+} from "../../../../../domain/api/routes/components/expeditions";
 
 const ExpeditionForm = () => {
   const [expeditions, setExpeditions] = useState([]);
@@ -14,7 +17,7 @@ const ExpeditionForm = () => {
       try {
         const data = await fetchUserExpeditions();
         setExpeditions(data);
-        setSelectedExpedition(data[0]);
+        setSelectedExpedition(data[0] || {}); 
       } catch (error) {
         console.error("Error fetching expeditions:", error.message);
         setErrorMessage("Failed to fetch expeditions.");
@@ -27,7 +30,7 @@ const ExpeditionForm = () => {
   const handleSelectChange = (event) => {
     const expeditionId = event.target.value;
     const expedition = expeditions.find((exp) => exp._id === expeditionId);
-    setSelectedExpedition(expedition);
+    setSelectedExpedition(expedition || {}); 
   };
 
   const handleInputChange = (event) => {
@@ -60,19 +63,38 @@ const ExpeditionForm = () => {
     }
   };
 
+  const handleAdd = async () => {
+    try {
+      setErrorMessage("");
+      setSuccessMessage("");
+      const newExpedition = {
+        droneID: selectedExpedition.droneID,
+        startTime: selectedExpedition.startTime,
+        endTime: selectedExpedition.endTime,
+        location: selectedExpedition.location,
+        gasStats: selectedExpedition.gasStats,
+      };
+      await addExpedition(newExpedition); 
+      setSuccessMessage("Expedition added successfully!");
+    } catch (error) {
+      console.error("Error adding expedition:", error.message);
+      setErrorMessage("Failed to add expedition.");
+    }
+  };
+
   if (!selectedExpedition) {
     return <div>Loading...</div>;
   }
 
   return (
     <div>
-      <form action="" id="expiForm">
+      <form id="expiForm">
         <div className="expiFormContent">
           <select
             name="Expedition"
             id="expeditionSelect"
             onChange={handleSelectChange}
-            value={selectedExpedition._id}
+            value={selectedExpedition._id || ""}
           >
             {expeditions.map((expedition) => (
               <option key={expedition._id} value={expedition._id}>
@@ -91,28 +113,20 @@ const ExpeditionForm = () => {
             type="date"
             placeholder="Enter start time"
             name="startTime"
-            value={
-              selectedExpedition.startTime
-                ? selectedExpedition.startTime.split("T")[0]
-                : ""
-            }
+            value={selectedExpedition.startTime?.split("T")[0] || ""}
             onChange={handleInputChange}
           />
           <input
             type="date"
             placeholder="Enter end time"
             name="endTime"
-            value={
-              selectedExpedition.endTime
-                ? selectedExpedition.endTime.split("T")[0]
-                : ""
-            }
+            value={selectedExpedition.endTime?.split("T")[0] || ""}
             onChange={handleInputChange}
           />
           <input
             type="text"
             placeholder="Enter latitude"
-            name="location.latitude"
+            name="latitude"
             value={selectedExpedition.location?.latitude || ""}
             onChange={(e) =>
               setSelectedExpedition((prev) => ({
@@ -124,7 +138,7 @@ const ExpeditionForm = () => {
           <input
             type="text"
             placeholder="Enter longitude"
-            name="location.longitude"
+            name="longitude"
             value={selectedExpedition.location?.longitude || ""}
             onChange={(e) =>
               setSelectedExpedition((prev) => ({
@@ -174,6 +188,7 @@ const ExpeditionForm = () => {
             placeholder="Give us some feedback?"
           ></textarea>
           <div id="expiButtons">
+            <CustomButton onClick={handleAdd}>Add</CustomButton>
             <CustomButton onClick={handleUpdate}>Update</CustomButton>
           </div>
         </div>

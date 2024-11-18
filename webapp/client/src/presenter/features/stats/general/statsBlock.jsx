@@ -9,7 +9,7 @@ const StatsBlock = () => {
   const [droneID, setDroneID] = useState("");
   const { droneData, expeditionData } = useFetchDroneData(droneID);
   return (
-      <div id="statsInnerLeft">
+      <div class="statsInnerLeft">
         <DroneInfo
           droneID={droneID}
           setDroneID={setDroneID}
