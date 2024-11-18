@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Cookies from "js-cookie";;
-import { fetchUserSettings, updateUserDetails, updateUserPassword } from "../../../domain/api/routes/components/settings";
+import Cookies from "js-cookie";
+import {
+  fetchUserSettings,
+  updateUserDetails,
+  updateUserPassword,
+} from "../../../domain/api/routes/components/settings";
 import SettingsForm from "./components/settingsForm";
 import SettingsButtons from "./components/settingsButtons";
 import PasswordForm from "./components/passwordForm";
@@ -87,13 +91,17 @@ function SettingsBlock() {
         lastName={lastName}
         emailAddress={emailAddress}
         username={username}
+        setFirstName={setFirstName} 
+        setLastName={setLastName}
+        setEmailAddress={setEmailAddress}
+        setUsername={setUsername}
         isEditFormVisible={isEditFormVisible}
-        toggleForm={toggleForm}
         handleUpdate={handleUpdate}
         toggleButtonPass={toggleButtonPass}
         togglePass={togglePass}
         isUpdateButtonVisible={isUpdateButtonVisible}
       />
+
       <PasswordForm
         isPassVisible={isPassVisible}
         isPassButtonVisible={isPassButtonVisible}

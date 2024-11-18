@@ -5,8 +5,11 @@ function SettingsForm({
   lastName,
   emailAddress,
   username,
+  setFirstName,
+  setLastName,
+  setEmailAddress,
+  setUsername,
   isEditFormVisible,
-  toggleForm,
   handleUpdate,
   toggleButtonPass,
   togglePass,
@@ -18,7 +21,12 @@ function SettingsForm({
         <div id="settingsInput">
           <input type="text" name="firstName" value={firstName} readOnly />
           <input type="text" name="lastName" value={lastName} readOnly />
-          <input type="email" name="emailAddress" value={emailAddress} readOnly />
+          <input
+            type="email"
+            name="emailAddress"
+            value={emailAddress}
+            readOnly
+          />
           <input type="text" name="username" value={username} readOnly />
         </div>
         <form onSubmit={handleUpdate}>
@@ -58,6 +66,7 @@ function SettingsForm({
               onChange={(e) => setUsername(e.target.value)}
               required
             />
+
             <button
               type="button"
               id="changePass"
