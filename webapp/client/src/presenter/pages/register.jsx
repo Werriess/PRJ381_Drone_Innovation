@@ -60,7 +60,7 @@ function Register() {
         <img src="/images/airPilotHat.svg" alt="Air Pilot Hat" />
       </div>
       <div id="registerContainer">
-        <form onSubmit={handleSubmit} id="leftSide">
+        <form onSubmit={handleSubmit}>
           <input
             type="text"
             name="firstName"
