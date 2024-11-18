@@ -25,14 +25,9 @@ This project focuses on creating a drone equipped with gas sensors to detect haz
 2. Change directory:
    ```bash
    cd webapp
-3. Install dependencies:
-   ```bash
-    npm install
+3. Open docker desktop:
    
-4. Start the development server:
+4. Start development:
     ```bash
-    npm run dev
-5. Start the express server:
-   ```bash
-   node app.js
+    docker compose up
 
