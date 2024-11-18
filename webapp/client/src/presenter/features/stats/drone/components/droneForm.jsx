@@ -1,8 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { addDrone, deleteDrone, fetchLatestID, updateDrone } from "../../../../../domain/api/routes/components/drone";
+import {
+  addDrone,
+  deleteDrone,
+  fetchLatestID,
+  updateDrone,
+} from "../../../../../domain/api/routes/components/drone";
+import { CustomButton } from "../../../../layout/button";
 
-
-const DroneForm = ({ drones, onDroneAdded, onDroneUpdated, onDroneDeleted }) => {
+const DroneForm = ({
+  drones,
+  onDroneAdded,
+  onDroneUpdated,
+  onDroneDeleted,
+}) => {
   const [droneType, setDroneType] = useState("");
   const [flightHours, setFlightHours] = useState("");
   const [droneNum, setDroneNum] = useState("");
@@ -15,7 +25,9 @@ const DroneForm = ({ drones, onDroneAdded, onDroneUpdated, onDroneDeleted }) => 
 
   const handleDroneSelected = (e) => {
     const droneIdSelected = e.target.value;
-    const selectedDrone = drones.find(drone => drone.droneID._id === droneIdSelected);
+    const selectedDrone = drones.find(
+      (drone) => drone.droneID._id === droneIdSelected
+    );
     if (selectedDrone) {
       setDroneNum(selectedDrone.droneID.droneNum);
       setDroneType(selectedDrone.droneID.droneType);
@@ -65,18 +77,18 @@ const DroneForm = ({ drones, onDroneAdded, onDroneUpdated, onDroneDeleted }) => 
   return (
     <form id="droneForm" onSubmit={handleAdd}>
       {error && <p>{error}</p>}
-      <div>
+      <div className="droneInputs">
         <label>Drone Number:</label>
         <select id="droneNumSelect" onChange={handleDroneSelected}>
           <option value="">Select a Drone</option>
-          {drones.map(drone => (
+          {drones.map((drone) => (
             <option key={drone.droneID._id} value={drone.droneID._id}>
               {drone.droneID.droneNum}
             </option>
           ))}
         </select>
       </div>
-      <div>
+      <div className="droneInputs">
         <label>Drone Type:</label>
         <input
           type="text"
@@ -85,7 +97,7 @@ const DroneForm = ({ drones, onDroneAdded, onDroneUpdated, onDroneDeleted }) => 
           required
         />
       </div>
-      <div>
+      <div className="droneInputs">
         <label>Flight Hours:</label>
         <input
           type="text"
@@ -94,9 +106,9 @@ const DroneForm = ({ drones, onDroneAdded, onDroneUpdated, onDroneDeleted }) => 
         />
       </div>
       <div id="buttonsDrone">
-        <button type="submit">Add Drone</button>
-        <button type="button" onClick={handleUpdate}>Update Drone</button>
-        <button type="button" onClick={handleDelete}>Delete Drone</button>
+        <CustomButton onClick={handleAdd}>Add drone</CustomButton>
+        <CustomButton onClick={handleUpdate}>Update</CustomButton>
+        <CustomButton onClick={handleUpdate}>Update</CustomButton>
       </div>
     </form>
   );

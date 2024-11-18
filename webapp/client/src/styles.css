@@ -41,12 +41,12 @@ header img {
   height: 60px;
 }
 
-#logo {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  color: hsl(5, 76%, 42%);
-}
+  #logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: hsl(5, 76%, 42%);
+  }
 
 #infoLink {
   text-decoration: none;
@@ -106,7 +106,6 @@ header img {
   justify-content: center;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.649);
-  min-height: 90vh;
 }
 
 #overlay {
@@ -368,24 +367,26 @@ table tbody tr {
   width: 100%;
   background-color: rgba(200, 200, 200, 100);
   height: 100%;
+  min-height: 0;
   gap: 2rem;
 }
 
 #statsContentRight {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 100%;
+  flex: 1;
+  overflow-y: hidden;
 }
 
-#statsInnerLeft {
-  margin-top: 2rem;
-  padding: 3rem;
+.statsInnerLeft {
   background-color: white;
-  max-height: 80%;
+  display: flex;
+  flex-direction: column;
+  max-height: 100%;
   color: var(--redItems);
+  max-height: 100%;
+  padding: 2rem;
+  margin-top: 2rem;
   margin-right: 2rem;
-  margin-bottom: 2rem;
 }
 
 #droneBlock{
@@ -402,16 +403,15 @@ table tbody tr {
 #droneForm{
   display: flex;
   flex-direction: column;
-  margin-top: 30px;
-  color: whitesmoke;
+  gap: 10px;
 }
 
-#droneForm div{
-  margin-bottom: 20px;
-}
-
-#droneForm div label{
-  margin-right: 20px;
+.droneInputs {
+  display: flex;
+  flex-direction: column;
+  gap: 5px; 
+  justify-content: start;
+  align-items: start;
 }
 
 #droneNumSelect{
@@ -434,22 +434,8 @@ table tbody tr {
 
 #buttonsDrone{
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-#buttonsDrone button{
-  width: 150px;
-  height: 40px;
-  border-radius: 24px;
-  border: none;
-  cursor: pointer;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-}
-
-#buttonsDrone button:hover{
-  background-color: #333333;
-  color: whitesmoke;
+  gap: 2rem;
+  
 }
 
 .grid-container {
@@ -525,18 +511,12 @@ table tbody tr {
 }
 
 #loginPage {
-  background-color: hsl(var(--greyBackground));
-  height: 100vh;
-}
-
-#logoLoginPage {
-  color: rgb(187, 39, 26);
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
   justify-content: center;
-  padding-top: 12rem;
+  background-color: hsl(var(--greyBackground));
+  height: 100vh;
 }
 
 #logoLoginPage h1 {
@@ -544,6 +524,7 @@ table tbody tr {
   font-weight: normal;
   font-size: 42px;
   margin-top: -10px;
+  color: var(--redItems);
 }
 
 #formBlock {

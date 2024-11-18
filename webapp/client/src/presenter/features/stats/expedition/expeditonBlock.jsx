@@ -2,7 +2,7 @@ import ExpeditionForm from "./components/expeditionForm";
 
 const ExpeditionBlock = () => {
     return (
-        <div>
+        <div className="statsInnerLeft">
             <ExpeditionForm/>
         </div>
     )

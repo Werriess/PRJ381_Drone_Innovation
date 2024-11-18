@@ -28,6 +28,48 @@ export const getUserExpeditions = async (req, res) => {
   }
 };
 
+export const addExpedition = async (req, res) => {
+  const userId = req.user.id;
+
+  try {
+    const { 
+      droneID, 
+      startTime, 
+      endTime, 
+      location: { latitude, longitude }, 
+      gasStats: { carbonMonoxide, methane, butane, liquefiedPetroleumGas } 
+    } = req.body;
+
+    if (!droneID || !startTime || !endTime || !latitude || !longitude) {
+      return res.status(400).json({ message: "Missing required fields." });
+    }
+
+    const newExpedition = new Expedition({
+      userID: userId,
+      droneID,
+      startTime,
+      endTime,
+      location: { latitude, longitude },
+      gasStats: { carbonMonoxide, methane, butane, liquefiedPetroleumGas },
+    });
+
+    const savedExpedition = await newExpedition.save();
+
+    const newDroneExpedition = new DroneExpedition({
+      droneID,
+      expeditionID: savedExpedition._id,
+    });
+
+    await newDroneExpedition.save();
+
+    res.status(201).json({ message: "Expedition added successfully.", expedition: savedExpedition });
+  } catch (error) {
+    console.error("Error adding expedition:", error);
+    res.status(500).json({ message: "Internal server error." });
+  }
+};
+
+
 export const updateExpedition = async (req, res) => {
   const { expeditionID } = req.params;
   const updateData = req.body; 
