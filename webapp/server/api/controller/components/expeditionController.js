@@ -91,4 +91,20 @@ export const updateExpedition = async (req, res) => {
   }
 };
 
+export const deleteExpedition = async (req, res) => {
+  try {
+    const { expeditionID } = req.params;
+    const deleteExpedition = await Expedition.findByIdAndDelete(expeditionID);
+    const deleteDroneExpedition = await DroneExpedition.findOneAndDelete({expeditionID});
+
+    if(!deleteExpedition || !deleteDroneExpedition) {
+      return res.status(404).json({message: "Expedition not found"});
+    } 
+    res.status(200).json({message: "Expedition deleted successfully"});
+  } catch (error) {
+     console.error("Error deleting expedition:", err);
+    res.status(500).json({ message: "Error deleting expedition."});
+  } 
+}
+
 

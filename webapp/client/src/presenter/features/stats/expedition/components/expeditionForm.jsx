@@ -2,13 +2,26 @@ import React, { useEffect, useState } from "react";
 import { CustomButton } from "../../../../layout/button";
 import {
   addExpedition,
+  deleteExpedition,
   fetchUserExpeditions,
   updateExpedition,
 } from "../../../../../domain/api/routes/components/expeditions";
 
 const ExpeditionForm = () => {
   const [expeditions, setExpeditions] = useState([]);
-  const [selectedExpedition, setSelectedExpedition] = useState(null);
+  const [selectedExpedition, setSelectedExpedition] = useState({
+    droneID: "",
+    startTime: "",
+    endTime: "",
+    location: { latitude: "", longitude: "" },
+    gasStats: {
+      carbonMonoxide: "",
+      methane: "",
+      butane: "",
+      liquefiedPetroleumGas: "",
+    },
+    feedback: "",
+  });
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
 
@@ -17,7 +30,19 @@ const ExpeditionForm = () => {
       try {
         const data = await fetchUserExpeditions();
         setExpeditions(data);
-        setSelectedExpedition(data[0] || {}); 
+        setSelectedExpedition({
+          droneID: "",
+          startTime: "",
+          endTime: "",
+          location: { latitude: "", longitude: "" },
+          gasStats: {
+            carbonMonoxide: "",
+            methane: "",
+            butane: "",
+            liquefiedPetroleumGas: "",
+          },
+          feedback: "",
+        }); 
       } catch (error) {
         console.error("Error fetching expeditions:", error.message);
         setErrorMessage("Failed to fetch expeditions.");
@@ -30,7 +55,19 @@ const ExpeditionForm = () => {
   const handleSelectChange = (event) => {
     const expeditionId = event.target.value;
     const expedition = expeditions.find((exp) => exp._id === expeditionId);
-    setSelectedExpedition(expedition || {}); 
+    setSelectedExpedition(expedition || {
+      droneID: "",
+      startTime: "",
+      endTime: "",
+      location: { latitude: "", longitude: "" },
+      gasStats: {
+        carbonMonoxide: "",
+        methane: "",
+        butane: "",
+        liquefiedPetroleumGas: "",
+      },
+      feedback: "",
+    }); 
   };
 
   const handleInputChange = (event) => {
@@ -74,17 +111,68 @@ const ExpeditionForm = () => {
         location: selectedExpedition.location,
         gasStats: selectedExpedition.gasStats,
       };
-      await addExpedition(newExpedition); 
+      await addExpedition(newExpedition);
       setSuccessMessage("Expedition added successfully!");
+  
+      const data = await fetchUserExpeditions();
+      setExpeditions(data);
+  
+      setSelectedExpedition({
+        droneID: "",
+        startTime: "",
+        endTime: "",
+        location: { latitude: "", longitude: "" },
+        gasStats: {
+          carbonMonoxide: "",
+          methane: "",
+          butane: "",
+          liquefiedPetroleumGas: "",
+        },
+        feedback: "",
+      });
+  
     } catch (error) {
       console.error("Error adding expedition:", error.message);
       setErrorMessage("Failed to add expedition.");
     }
   };
-
-  if (!selectedExpedition) {
-    return <div>Loading...</div>;
-  }
+  
+  const handleDelete = async () => {
+    try {
+      if (!selectedExpedition._id) {
+        setErrorMessage("No expedition selected.");
+        return;
+      }
+  
+      setErrorMessage("");
+      setSuccessMessage("");
+  
+      await deleteExpedition(selectedExpedition._id);
+  
+      setExpeditions((prev) =>
+        prev.filter((expedition) => expedition._id !== selectedExpedition._id)
+      );
+      setSelectedExpedition({
+        droneID: "",
+        startTime: "",
+        endTime: "",
+        location: { latitude: "", longitude: "" },
+        gasStats: {
+          carbonMonoxide: "",
+          methane: "",
+          butane: "",
+          liquefiedPetroleumGas: "",
+        },
+        feedback: "",
+      });
+  
+      setSuccessMessage("Expedition removed successfully!");
+    } catch (error) {
+      console.error("Error removing expedition:", error.message);
+      setErrorMessage("Failed to remove expedition.");
+    }
+  };
+  
 
   return (
     <div>
@@ -96,6 +184,7 @@ const ExpeditionForm = () => {
             onChange={handleSelectChange}
             value={selectedExpedition._id || ""}
           >
+            <option value="">Select an expedition</option>
             {expeditions.map((expedition) => (
               <option key={expedition._id} value={expedition._id}>
                 {expedition._id}
@@ -190,6 +279,7 @@ const ExpeditionForm = () => {
           <div id="expiButtons">
             <CustomButton onClick={handleAdd}>Add</CustomButton>
             <CustomButton onClick={handleUpdate}>Update</CustomButton>
+            <CustomButton onClick={handleDelete}>Delete</CustomButton>
           </div>
         </div>
       </form>
