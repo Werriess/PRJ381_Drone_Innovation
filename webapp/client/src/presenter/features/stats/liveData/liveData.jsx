@@ -4,26 +4,35 @@ import { fetchSensorData } from "../../../../domain/api/routes/components/liveDa
 import LiveDataCard from "./components/liveDataCard";
 
 const LiveData = () => {
-  let [sensorData, setSensorData] = useState("Waiting for data...");
+  const [sensorData, setSensorData] = useState(null); 
+  const [loading, setLoading] = useState(true); 
 
   useEffect(() => {
     const getData = async () => {
       try {
         const data = await fetchSensorData();
-        setSensorData(data.Analog || "No data available");
-      } catch (error) {}
+        setSensorData(data.Analog || null); 
+        setLoading(false); 
+      } catch (error) {
+        console.error("Error fetching sensor data:", error);
+        setLoading(false); 
+      }
     };
 
     getData();
     const intervalId = setInterval(getData, 500);
-    return () => clearInterval(intervalId);
+    return () => clearInterval(intervalId); 
   }, []);
 
   let finalData = "";
-  if (sensorData < 3500) {
+  if (loading) {
+    finalData = "Waiting for data...";
+  } else if (sensorData === null) {
+    finalData = "No data available";
+  } else if (sensorData < 3500) {
     finalData = "🟩Levels are normal🟩";
   } else {
-    finalData = "🟥GAS DETTECTED!!!🟥";
+    finalData = "🟥GAS DETECTED!!!🟥";
   }
 
   return (
@@ -32,7 +41,7 @@ const LiveData = () => {
         <Card variant="outlined" sx={{ p: 20 }}>
           <LiveDataCard
             title="Live Data:"
-            description={`Gas Sensor Value: ${sensorData} ${finalData}`}
+            description={`Gas Sensor Value: ${sensorData || "N/A"} ${finalData}`}
           />
         </Card>
       </Box>

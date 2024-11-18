@@ -42,7 +42,7 @@ const ExpeditionForm = () => {
             liquefiedPetroleumGas: "",
           },
           feedback: "",
-        }); 
+        });
       } catch (error) {
         console.error("Error fetching expeditions:", error.message);
         setErrorMessage("Failed to fetch expeditions.");
@@ -55,19 +55,21 @@ const ExpeditionForm = () => {
   const handleSelectChange = (event) => {
     const expeditionId = event.target.value;
     const expedition = expeditions.find((exp) => exp._id === expeditionId);
-    setSelectedExpedition(expedition || {
-      droneID: "",
-      startTime: "",
-      endTime: "",
-      location: { latitude: "", longitude: "" },
-      gasStats: {
-        carbonMonoxide: "",
-        methane: "",
-        butane: "",
-        liquefiedPetroleumGas: "",
-      },
-      feedback: "",
-    }); 
+    setSelectedExpedition(
+      expedition || {
+        droneID: "",
+        startTime: "",
+        endTime: "",
+        location: { latitude: "", longitude: "" },
+        gasStats: {
+          carbonMonoxide: "",
+          methane: "",
+          butane: "",
+          liquefiedPetroleumGas: "",
+        },
+        feedback: "",
+      }
+    );
   };
 
   const handleInputChange = (event) => {
@@ -113,10 +115,10 @@ const ExpeditionForm = () => {
       };
       await addExpedition(newExpedition);
       setSuccessMessage("Expedition added successfully!");
-  
+
       const data = await fetchUserExpeditions();
       setExpeditions(data);
-  
+
       setSelectedExpedition({
         droneID: "",
         startTime: "",
@@ -130,25 +132,24 @@ const ExpeditionForm = () => {
         },
         feedback: "",
       });
-  
     } catch (error) {
       console.error("Error adding expedition:", error.message);
       setErrorMessage("Failed to add expedition.");
     }
   };
-  
+
   const handleDelete = async () => {
     try {
       if (!selectedExpedition._id) {
         setErrorMessage("No expedition selected.");
         return;
       }
-  
+
       setErrorMessage("");
       setSuccessMessage("");
-  
+
       await deleteExpedition(selectedExpedition._id);
-  
+
       setExpeditions((prev) =>
         prev.filter((expedition) => expedition._id !== selectedExpedition._id)
       );
@@ -165,14 +166,13 @@ const ExpeditionForm = () => {
         },
         feedback: "",
       });
-  
+
       setSuccessMessage("Expedition removed successfully!");
     } catch (error) {
       console.error("Error removing expedition:", error.message);
       setErrorMessage("Failed to remove expedition.");
     }
   };
-  
 
   return (
     <div>
@@ -268,14 +268,6 @@ const ExpeditionForm = () => {
               handleGasInputChange("liquefiedPetroleumGas", e.target.value)
             }
           />
-        </div>
-        <div className="expiFormContent">
-          <textarea
-            name="feedback"
-            rows="25"
-            cols="50"
-            placeholder="Give us some feedback?"
-          ></textarea>
           <div id="expiButtons">
             <CustomButton onClick={handleAdd}>Add</CustomButton>
             <CustomButton onClick={handleUpdate}>Update</CustomButton>
