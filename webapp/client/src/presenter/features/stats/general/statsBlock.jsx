@@ -10,11 +10,11 @@ const StatsBlock = () => {
   const { droneData, expeditionData } = useFetchDroneData(droneID);
   return (
       <div class="statsInnerLeft">
-        <DroneInfo
+        {/* <DroneInfo
           droneID={droneID}
           setDroneID={setDroneID}
           droneData={droneData}
-        />
+        /> */}
         <ExpeditionData expeditionData={expeditionData} />
         <PieChartSection expedition={expeditionData}/>
       </div>

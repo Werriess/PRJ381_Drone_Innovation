@@ -1,29 +1,32 @@
 import { useState, useEffect } from "react";
 import PieChartSection from "./pieChartBlock";
+import { fetchUserExpeditions } from "../../../../../domain/api/routes/components/expeditions";
 
-const ExpeditionData = ({ expeditionData }) => {
-  const [selectedExpeditionId, setSelectedExpeditionId] = useState("");
+const ExpeditionData = () => {
+  const [expeditions, setExpeditions] = useState([]);
   const [selectedExpedition, setSelectedExpedition] = useState(null);
-
-  const handleSelectChange = (event) => {
-    const selectedId = event.target.value;
-    setSelectedExpeditionId(selectedId);
-
-    const expedition = expeditionData.find(
-      (expedition) => expedition._id === selectedId
-    );
-    setSelectedExpedition(expedition);
-  };
-
-  const displayedExpeditions =
-    selectedExpeditionId === ""
-      ? []
-      : expeditionData.filter(
-          (expedition) => expedition._id === selectedExpeditionId
-        );
+  const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
-  }, [expeditionData]);
+    const fetchData = async () => {
+      try {
+        const data = await fetchUserExpeditions();
+        setExpeditions(data);
+        setSelectedExpedition(data[0] || null); 
+      } catch (error) {
+        console.error("Error fetching expeditions:", error.message);
+        setErrorMessage("Failed to fetch expeditions.");
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const handleSelectChange = (event) => {
+    const expeditionId = event.target.value;
+    const expedition = expeditions.find((exp) => exp._id === expeditionId);
+    setSelectedExpedition(expedition || null);
+  };
 
   return (
     <section className="expeditionInfoBlock">
@@ -31,55 +34,74 @@ const ExpeditionData = ({ expeditionData }) => {
         <u>Expedition data:</u>
       </h1>
 
-      <select onChange={handleSelectChange} value={selectedExpeditionId}>
+      {errorMessage && <p className="error">{errorMessage}</p>}
+
+      <select
+        onChange={handleSelectChange}
+        value={selectedExpedition?._id || ""}
+      >
         <option value="">Choose an expedition</option>
-        {expeditionData.map((expedition) => (
+        {expeditions.map((expedition) => (
           <option key={expedition._id} value={expedition._id}>
             Expedition {expedition.startTime || expedition._id}
           </option>
         ))}
       </select>
-
       <div className="expeditionScrollContainer">
-        {selectedExpeditionId === "" ? (
+        {!selectedExpedition ? (
           <div className="expeditionCard">
             <p>Choose an expedition to view its data.</p>
           </div>
-        ) : displayedExpeditions.length > 0 ? (
-          displayedExpeditions.map((expedition) => (
-            <div key={expedition._id} className="expeditionCard">
-              <table>
-                <tbody>
-                  <tr>
-                    <td>Latitude:</td>
-                    <td>{expedition.location?.latitude || "N/A"}</td>
-                  </tr>
-                  <tr>
-                    <td>Longitude:</td>
-                    <td>{expedition.location?.longitude || "N/A"}</td>
-                  </tr>
-                  <tr>
-                    <td>Carbon Monoxide:</td>
-                    <td>{Math.round(expedition.gasStats?.carbonMonoxide) + " ppm" || "N/A"}</td>
-                  </tr>
-                  <tr>
-                    <td>Methane:</td>
-                    <td>{Math.round(expedition.gasStats?.methane) + " ppm"  || "N/A"}</td>
-                  </tr>
-                  <tr>
-                    <td>Butane:</td>
-                    <td>{Math.round(expedition.gasStats?.butane) + " ppm"  || "N/A"}</td>
-                  </tr>
-                  <tr>
-                    <td>Liquefied Petroleum Gas:</td>
-                    <td>{Math.round(expedition.gasStats?.liquefiedPetroleumGas) + " ppm"  || "N/A"}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          ))
         ) : (
-          <p>No expedition data available.</p>
+          <div key={selectedExpedition._id} className="expeditionCard">
+            <table>
+              <tbody>
+                <tr>
+                  <td>Latitude:</td>
+                  <td>{selectedExpedition.location?.latitude || "N/A"}</td>
+                </tr>
+                <tr>
+                  <td>Longitude:</td>
+                  <td>{selectedExpedition.location?.longitude || "N/A"}</td>
+                </tr>
+                <tr>
+                  <td>Carbon Monoxide:</td>
+                  <td>
+                    {selectedExpedition.gasStats?.carbonMonoxide
+                      ? Math.round(selectedExpedition.gasStats.carbonMonoxide) +
+                        " ppm"
+                      : "N/A"}
+                  </td>
+                </tr>
+                <tr>
+                  <td>Methane:</td>
+                  <td>
+                    {selectedExpedition.gasStats?.methane
+                      ? Math.round(selectedExpedition.gasStats.methane) + " ppm"
+                      : "N/A"}
+                  </td>
+                </tr>
+                <tr>
+                  <td>Butane:</td>
+                  <td>
+                    {selectedExpedition.gasStats?.butane
+                      ? Math.round(selectedExpedition.gasStats.butane) + " ppm"
+                      : "N/A"}
+                  </td>
+                </tr>
+                <tr>
+                  <td>Liquefied Petroleum Gas:</td>
+                  <td>
+                    {selectedExpedition.gasStats?.liquefiedPetroleumGas
+                      ? Math.round(
+                          selectedExpedition.gasStats.liquefiedPetroleumGas
+                        ) + " ppm"
+                      : "N/A"}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         )}
         {selectedExpedition && selectedExpedition.gasStats && (
           <PieChartSection expedition={selectedExpedition} />

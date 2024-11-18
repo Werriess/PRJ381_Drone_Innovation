@@ -2,6 +2,7 @@ import express from "express";
 import isAuthenticated from "../../../middleware/auth.js";
 import {
   addExpedition,
+  deleteExpedition,
   getUserExpeditions,
   updateExpedition,
 } from "../../controller/components/expeditionController.js";
@@ -15,5 +16,5 @@ expeditionRouter.put(
   isAuthenticated,
   updateExpedition
 );
-
+expeditionRouter.delete("/expeditions/delete/:expeditionID", isAuthenticated, deleteExpedition);
 export default expeditionRouter;

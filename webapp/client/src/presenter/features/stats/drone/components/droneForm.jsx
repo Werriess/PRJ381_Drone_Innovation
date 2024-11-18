@@ -81,11 +81,13 @@ const DroneForm = ({
         <label>Drone Number:</label>
         <select id="droneNumSelect" onChange={handleDroneSelected}>
           <option value="">Select a Drone</option>
-          {drones.map((drone) => (
-            <option key={drone.droneID._id} value={drone.droneID._id}>
-              {drone.droneID.droneNum}
-            </option>
-          ))}
+          {drones
+            .filter((drone) => drone.droneID) 
+            .map((drone) => (
+              <option key={drone.droneID._id} value={drone.droneID._id}>
+                {drone.droneID.droneNum}
+              </option>
+            ))}
         </select>
       </div>
       <div className="droneInputs">
@@ -108,7 +110,7 @@ const DroneForm = ({
       <div id="buttonsDrone">
         <CustomButton onClick={handleAdd}>Add drone</CustomButton>
         <CustomButton onClick={handleUpdate}>Update</CustomButton>
-        <CustomButton onClick={handleUpdate}>Update</CustomButton>
+        <CustomButton onClick={handleDelete}>Delete</CustomButton>
       </div>
     </form>
   );
