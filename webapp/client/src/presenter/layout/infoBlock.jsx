@@ -42,7 +42,7 @@ function MainContent() {
           </p>
           <p id="teamList">
             Meet The Team:
-            <ul class="team">
+            <ul className="team">
               <li>
                 <img src="/images/xander.png" />
                 <h4>Xander Glanninger</h4>
@@ -56,7 +56,7 @@ function MainContent() {
                 <h4>Wian van Niekerk</h4>
               </li>
             </ul>
-            <ul class="team">
+            <ul className="team">
               <li>
                 <img src="/images/wianJ.png" />
                 <h4>Wian Joubert</h4>
